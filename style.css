@@ -177,6 +177,7 @@ img {
   align-items: center;
   padding: calc(var(--nav-height) + 72px) 0 60px;
   position: relative;
+  overflow: hidden;
 }
 
 /* Subtle radial glow behind hero */
@@ -527,4 +528,8 @@ img {
 
 .legal__body li {
   margin-bottom: 10px;
+}
+
+.legal__body a {
+  word-break: break-all;
 }
