@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OUTREPD — Outperform Your Limits</title>
   <meta name="description" content="OUTREPD helps you track workouts, crush goals, and push beyond your personal records. Download on the App Store.">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#FAF9F6">
 
   <!-- Open Graph -->
   <meta property="og:title" content="OUTREPD — Outperform Your Limits">
@@ -17,10 +17,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon (inline SVG data URI using brand colors) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23000'/><text x='50' y='62' font-family='Arial,sans-serif' font-size='28' font-weight='800' fill='%2300AAFF' text-anchor='middle'>OUT</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/logo-icon.png">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2.2">
+  <style>
+    :root {
+      --color-canvas: #FAF9F6;
+      --color-ink: #1B1A18;
+      --color-rival: #D9765F;
+      --color-line: #ECEAE4;
+      --color-muted: #8C887F;
+      --color-bg: #FAF9F6;
+      --color-text-primary: #1B1A18;
+      --color-text-secondary: #8C887F;
+    }
+    html, body {
+      background-color: #FAF9F6 !important;
+      color: #1B1A18 !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,8 +47,8 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="/" class="nav-brand" id="nav-brand">
-        <img src="assets/logo.png" alt="OUTREPD Logo" class="nav-brand__icon" id="nav-logo">
-        <span class="nav-brand__name">OUTREPD</span>
+        <img src="assets/logo-icon.png?v=3" alt="outrepd Logo" class="nav-brand__icon" id="nav-logo">
+        <span class="nav-brand__name">outrepd</span>
       </a>
       <a href="#" class="nav-cta" id="nav-download-btn">
         Download OUTREPD
@@ -47,7 +64,7 @@
       <div class="hero__grid container">
         <div class="hero__left">
           <h1 class="hero__headline" id="hero-headline">
-            Your Next Rival is Waiting.
+            Your Next <span class="hero__headline--rival">Rival</span> is Waiting.
           </h1>
           <p class="hero__subheadline" id="hero-subheadline">
             Match with fitness rivals at your skill level, enter real-time workout face-offs, and climb the global leaderboards.
@@ -55,7 +72,7 @@
           <!-- App Store Badge -->
           <div class="hero__store-badge" id="store-badge">
             <a href="#" class="store-badge-link" id="appstore-link" aria-label="Download on the App Store">
-              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store">
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
             </a>
           </div>
         </div>
@@ -64,7 +81,7 @@
           <!-- App Mockup -->
           <div class="hero__mockup-wrapper" id="hero-mockup">
             <div class="hero__mockup">
-              <img src="assets/iphone-mockup.svg" alt="OUTREPD App Mockup" class="hero__mockup-img" id="mockup-img">
+              <img src="assets/iphone-mockup.svg?v=2.1" alt="OUTREPD App Mockup" class="hero__mockup-img" id="mockup-img">
             </div>
           </div>
         </div>

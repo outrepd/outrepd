@@ -4,16 +4,24 @@
 
 /* --- Design Tokens --- */
 :root {
-  --color-bg: #000000;
-  --color-bg-elevated: #0A0A0F;
-  --color-accent: #00AAFF;
-  --color-accent-glow: rgba(0, 170, 255, 0.35);
-  --color-accent-dim: rgba(0, 170, 255, 0.12);
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #A0A0B8;
-  --color-text-muted: #5A5A6E;
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-glass: rgba(10, 10, 18, 0.75);
+  /* Brand Color Palette */
+  --color-canvas: #FAF9F6;  /* warm off-white — app background */
+  --color-ink: #1B1A18;     /* text, numbers, and the user */
+  --color-rival: #D9765F;   /* soft terracotta — the opponent */
+  --color-line: #ECEAE4;    /* hairlines */
+  --color-muted: #8C887F;   /* secondary text */
+
+  /* Semantic Mappings */
+  --color-bg: var(--color-canvas);
+  --color-bg-elevated: #F4F2EB;
+  --color-accent: var(--color-rival);
+  --color-accent-glow: rgba(217, 118, 95, 0.28);
+  --color-accent-dim: rgba(217, 118, 95, 0.08);
+  --color-text-primary: var(--color-ink);
+  --color-text-secondary: var(--color-muted);
+  --color-text-muted: var(--color-muted);
+  --color-border: var(--color-line);
+  --color-glass: rgba(250, 249, 246, 0.85);
 
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-size-hero: clamp(2.25rem, 4vw, 3rem); /* 36px - 48px */
@@ -92,21 +100,21 @@ img {
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  background: rgba(12, 12, 20, 0.6);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(250, 249, 246, 0.8);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--color-line);
   border-radius: 20px;
   padding: 0 28px;
   transition: background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
-  background: rgba(8, 8, 16, 0.85);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(250, 249, 246, 0.95);
+  border-color: var(--color-line);
   box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(0, 170, 255, 0.04);
+    0 4px 20px rgba(27, 26, 24, 0.05),
+    0 1px 3px rgba(27, 26, 24, 0.03);
 }
 
 .navbar .container {
@@ -126,17 +134,19 @@ img {
 }
 
 .nav-brand__icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   object-fit: cover;
+  box-shadow: 0 2px 8px rgba(27, 26, 24, 0.08);
 }
 
 .nav-brand__name {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-  color: var(--color-text-primary);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  text-transform: lowercase;
 }
 
 /* Nav CTA Button */
@@ -148,9 +158,9 @@ img {
   font-size: var(--font-size-nav);
   font-weight: 600;
   font-family: var(--font-family);
-  color: var(--color-bg);
-  background: var(--color-text-primary);
-  border: none;
+  color: var(--color-canvas);
+  background: var(--color-ink);
+  border: 1px solid var(--color-ink);
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -158,9 +168,10 @@ img {
 }
 
 .nav-cta:hover {
-  background: var(--color-accent);
-  color: #fff;
-  box-shadow: 0 0 24px var(--color-accent-glow);
+  background: var(--color-rival);
+  border-color: var(--color-rival);
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px var(--color-accent-glow);
   transform: translateY(-1px);
 }
 
@@ -223,10 +234,7 @@ img {
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 20px;
-  background: linear-gradient(135deg, #FFFFFF 0%, #C0D8F0 50%, var(--color-accent) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-ink);
 
   /* Animation */
   opacity: 0;
@@ -235,10 +243,14 @@ img {
   animation-delay: 0.15s;
 }
 
+.hero__headline--rival {
+  color: var(--color-rival);
+}
+
 .hero__subheadline {
   font-size: var(--font-size-sub);
   font-weight: 400;
-  color: var(--color-text-secondary);
+  color: var(--color-muted);
   line-height: 1.65;
   margin-bottom: 36px;
 
@@ -273,8 +285,8 @@ img {
   max-width: 100%;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6))
-          drop-shadow(0 0 50px rgba(0, 170, 255, 0.05));
+  filter: drop-shadow(0 24px 44px rgba(27, 26, 24, 0.12))
+          drop-shadow(0 2px 10px rgba(27, 26, 24, 0.05));
 }
 
 /* Glow under device */
@@ -286,7 +298,7 @@ img {
   transform: translateX(-50%);
   width: 60%;
   height: 60px;
-  background: radial-gradient(ellipse, var(--color-accent-glow) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(217, 118, 95, 0.15) 0%, transparent 70%);
   filter: blur(20px);
   pointer-events: none;
 }
@@ -328,8 +340,8 @@ img {
    ============================================ */
 .footer {
   padding: 32px 24px;
-  background: var(--color-bg-elevated);
-  border-top: 1px solid var(--color-border);
+  background: var(--color-canvas);
+  border-top: 1px solid var(--color-line);
 }
 
 .footer .container {
@@ -347,22 +359,22 @@ img {
 }
 
 .footer__link {
-  color: var(--color-text-secondary);
+  color: var(--color-muted);
   transition: color var(--transition-fast);
 }
 
 .footer__link:hover {
-  color: var(--color-accent);
+  color: var(--color-rival);
 }
 
 .footer__separator {
-  color: var(--color-text-muted);
+  color: var(--color-line);
   user-select: none;
 }
 
 .footer__copy {
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: var(--color-muted);
 }
 
 /* ============================================
@@ -487,7 +499,7 @@ img {
 
 .legal__header {
   margin-bottom: 48px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-line);
   padding-bottom: 24px;
 }
 
@@ -496,21 +508,22 @@ img {
   font-weight: 800;
   margin-bottom: 12px;
   letter-spacing: -0.01em;
+  color: var(--color-ink);
 }
 
 .legal__date {
   font-size: var(--font-size-small);
-  color: var(--color-text-secondary);
+  color: var(--color-muted);
 }
 
 .legal__body {
-  color: var(--color-text-secondary);
+  color: var(--color-ink);
   font-size: 0.975rem;
   line-height: 1.8;
 }
 
 .legal__body h2 {
-  color: var(--color-text-primary);
+  color: var(--color-ink);
   font-size: 1.4rem;
   font-weight: 700;
   margin-top: 40px;
@@ -531,5 +544,28 @@ img {
 }
 
 .legal__body a {
+  color: var(--color-rival);
   word-break: break-all;
+  transition: opacity var(--transition-fast);
 }
+
+.legal__body a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* ============================================
+   PALETTE UTILITY CLASSES
+   ============================================ */
+.text-canvas { color: var(--color-canvas); }
+.text-ink    { color: var(--color-ink); }
+.text-rival  { color: var(--color-rival); }
+.text-line   { color: var(--color-line); }
+.text-muted  { color: var(--color-muted); }
+
+.bg-canvas   { background-color: var(--color-canvas); }
+.bg-ink      { background-color: var(--color-ink); }
+.bg-rival    { background-color: var(--color-rival); }
+
+.border-line { border-color: var(--color-line); }
+
