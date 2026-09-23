@@ -82,6 +82,8 @@
 }
 
 .rank-card__badge {
+  position: relative;
+  overflow: hidden;
   width: 84px;
   height: 84px;
   border-radius: 50%;
@@ -99,6 +101,16 @@
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--tier-color, #8F8880);
+}
+
+/* Sits over the initial rather than replacing it in the DOM — a photo that
+   fails to load leaves the initial as the only thing that was ever there. */
+.rank-card__badge-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .rank-card__identity {
