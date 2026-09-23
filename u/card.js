@@ -71,10 +71,19 @@
     document
       .getElementById('rank-card')
       .style.setProperty('--tier-color', tier.color);
-    document.getElementById('rank-badge').setAttribute(
-      'data-initial',
-      username.charAt(0).toUpperCase(),
-    );
+    var badge = document.getElementById('rank-badge');
+    badge.setAttribute('data-initial', username.charAt(0).toUpperCase());
+    // The initial stays as the background — cleared only once the photo has
+    // actually loaded, so a broken or slow image never leaves a blank circle.
+    var existingPhoto = badge.querySelector('img');
+    if (existingPhoto) existingPhoto.remove();
+    if (card.avatar_url) {
+      var photo = document.createElement('img');
+      photo.className = 'rank-card__badge-photo';
+      photo.alt = '';
+      photo.src = card.avatar_url;
+      badge.appendChild(photo);
+    }
     document.getElementById('rank-username').textContent = username;
     document.getElementById('rank-tier').textContent =
       tier.name + ' ' + division + ' · ' + (card.lp || 0) + ' / 100 LP';
