@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OUTREPD — Duel me</title>
+  <meta name="description" content="Live 1v1 push-up showdowns decided by your camera. See their rank, then duel them.">
+  <meta name="theme-color" content="#FAF9F6">
+
+  <!-- Open Graph. Static on purpose: a page whose own JS renders the card
+       has nothing to show a crawler, which never runs that JS. A specific
+       per-person image is a later project (it needs a server to draw one),
+       not something this static page can do on its own. -->
+  <meta property="og:title" content="OUTREPD — Duel me">
+  <meta property="og:description" content="Live 1v1 push-up showdowns decided by your camera. See their rank, then duel them.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="/assets/logo-icon.png">
+  <link rel="apple-touch-icon" href="/assets/logo-icon.png">
+
+  <link rel="stylesheet" href="/style.css?v=2.2">
+  <link rel="stylesheet" href="/u/card.css?v=1">
+  <style>
+    html, body {
+      background-color: #FAF9F6 !important;
+      color: #1B1A18 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       NAVIGATION
+       ======================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-brand" id="nav-brand">
+        <img src="/assets/logo-icon.png?v=3" alt="outrepd Logo" class="nav-brand__icon" id="nav-logo">
+        <span class="nav-brand__name">outrepd</span>
+      </a>
+      <a href="#" class="nav-cta" id="nav-download-btn">
+        Download OUTREPD
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       CARD
+       ======================================== -->
+  <main class="card-page">
+    <div class="card-page__inner">
+
+      <div class="card-state" id="state-loading">
+        <div class="card-spinner" aria-hidden="true"></div>
+      </div>
+
+      <div class="card-state" id="state-missing" hidden>
+        <p class="card-missing__title">No lifter by that name</p>
+        <p class="card-missing__body">The link may be old, or the account may not exist anymore.</p>
+        <a href="#" class="nav-cta" id="missing-download-btn">Download OUTREPD</a>
+      </div>
+
+      <div class="card-state" id="state-card" hidden>
+        <div class="rank-card" id="rank-card">
+          <div class="rank-card__badge" id="rank-badge"></div>
+          <div class="rank-card__identity">
+            <span class="rank-card__avatar" id="rank-avatar"></span>
+            <div>
+              <div class="rank-card__name" id="rank-username"></div>
+              <div class="rank-card__tier" id="rank-tier"></div>
+              <div class="rank-card__places" id="rank-places"></div>
+            </div>
+          </div>
+          <div class="rank-card__divider"></div>
+          <div class="rank-card__stats" id="rank-stats"></div>
+        </div>
+
+        <p class="card-page__tagline" id="card-tagline"></p>
+        <a href="#" class="nav-cta card-page__cta" id="card-download-btn">Download OUTREPD to duel them</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__links">
+        <a href="/privacy" class="footer__link" id="footer-privacy">Privacy Policy</a>
+        <span class="footer__separator">·</span>
+        <a href="/terms" class="footer__link" id="footer-terms">Terms of Service</a>
+      </div>
+      <p class="footer__copy">&copy; 2026 OUTREPD. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+  <script src="/u/card.js"></script>
+</body>
+</html>

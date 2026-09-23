@@ -1,0 +1,180 @@
+/* ============================================
+   OUTREPD — the /u/<username> card page
+
+   Always dark, on purpose: this card is the same object the app itself
+   hands out as an image, so it has to look identical here whether the
+   reader's phone is in light or dark mode. The page around it stays on the
+   site's own light theme — only the card is the app's own dark palette.
+   ============================================ */
+
+.card-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-height) + 48px) 20px 60px;
+}
+
+.card-page__inner {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-state {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The [hidden] attribute's own display:none loses to the class rule above
+   without this — a well-known gotcha whenever a hideable element also sets
+   its own `display`. */
+.card-state[hidden] {
+  display: none;
+}
+
+/* --- loading --- */
+.card-spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid var(--color-line);
+  border-top-color: var(--color-rival);
+  animation: card-spin 0.8s linear infinite;
+  margin: 60px 0;
+}
+
+@keyframes card-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- not found --- */
+.card-missing__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 40px 0 8px;
+}
+
+.card-missing__body {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* --- the card itself --- */
+.rank-card {
+  width: 100%;
+  background: #121110;
+  border: 0.5px solid #2C2926;
+  border-radius: 22px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 24px 44px rgba(27, 26, 24, 0.18);
+}
+
+.rank-card__badge {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border: 2px solid var(--tier-color, #8F8880);
+  background:
+    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--tier-color, #8F8880) 30%, transparent), transparent 70%);
+}
+
+.rank-card__badge::after {
+  content: attr(data-initial);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--tier-color, #8F8880);
+}
+
+.rank-card__identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.rank-card__avatar { display: none; }
+
+.rank-card__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #F5EFE4;
+}
+
+.rank-card__tier {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tier-color, #8F8880);
+  margin-top: 2px;
+}
+
+.rank-card__places {
+  font-size: 0.72rem;
+  color: #8F8880;
+  margin-top: 4px;
+}
+
+.rank-card__divider {
+  width: 100%;
+  height: 0.5px;
+  background: #2C2926;
+  margin-bottom: 16px;
+}
+
+.rank-card__stats {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.rank-card__stat {
+  flex: 1;
+  background: #262320;
+  border-radius: 12px;
+  padding: 10px 4px;
+}
+
+.rank-card__stat-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #F5EFE4;
+  font-variant-numeric: tabular-nums;
+}
+
+.rank-card__stat-label {
+  font-size: 0.68rem;
+  color: #8F8880;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-page__tagline {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  text-align: center;
+}
+
+.card-page__cta {
+  margin-top: 14px;
+}
+
+@media (max-width: 480px) {
+  .rank-card { padding: 22px 16px; }
+}

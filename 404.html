@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found — OUTREPD</title>
+  <meta name="theme-color" content="#FAF9F6">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="/assets/logo-icon.png">
+  <link rel="stylesheet" href="/style.css?v=2.2">
+  <style>
+    html, body {
+      background-color: #FAF9F6 !important;
+      color: #1B1A18 !important;
+    }
+    .notfound {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .notfound__title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .notfound__body {
+      color: var(--color-muted);
+      margin-bottom: 24px;
+    }
+  </style>
+  <script>
+    // GitHub Pages has no server-side routing: an unknown path like
+    // /u/mokhtar_y lands here instead of at u/index.html. Hand it the
+    // username as a query param, which that page reads either way — the
+    // pretty path still works, it just detours through here to get there.
+    (function () {
+      var match = location.pathname.match(/^\/u\/([^/]+)\/?$/i);
+      if (match && match[1]) {
+        location.replace('/u/?name=' + encodeURIComponent(match[1]));
+      }
+    })();
+  </script>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-brand">
+        <img src="/assets/logo-icon.png?v=3" alt="outrepd Logo" class="nav-brand__icon">
+        <span class="nav-brand__name">outrepd</span>
+      </a>
+      <a href="#" class="nav-cta">Download OUTREPD</a>
+    </div>
+  </nav>
+
+  <main class="notfound">
+    <p class="notfound__title">Page not found</p>
+    <p class="notfound__body">That link doesn't lead anywhere on outrepd.</p>
+    <a href="/" class="nav-cta">Back home</a>
+  </main>
+</body>
+</html>

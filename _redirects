@@ -1,0 +1,3 @@
+# Netlify. Harmless if this site isn't hosted there — Netlify is the only
+# host that reads this particular file.
+/u/*  /u/index.html  200
