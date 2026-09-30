@@ -5,23 +5,25 @@
 /* --- Design Tokens --- */
 :root {
   /* Brand Color Palette */
-  --color-canvas: #FAF9F6;  /* warm off-white — app background */
-  --color-ink: #1B1A18;     /* text, numbers, and the user */
-  --color-rival: #D9765F;   /* soft terracotta — the opponent */
+  --color-canvas: #FAF9F6;  /* warm off-white — primary text in dark mode */
+  --color-ink: #1B1A18;     /* dark charcoal — background in dark mode */
+  --color-rival: #D9765F;   /* soft terracotta — accent & rival */
   --color-line: #ECEAE4;    /* hairlines */
   --color-muted: #8C887F;   /* secondary text */
 
-  /* Semantic Mappings */
-  --color-bg: var(--color-canvas);
-  --color-bg-elevated: #F4F2EB;
+  /* Semantic Mappings (Dark Mode) */
+  --color-bg: var(--color-ink);
+  --color-bg-elevated: #242320;
+  --color-bg-surface: #201F1D;
   --color-accent: var(--color-rival);
-  --color-accent-glow: rgba(217, 118, 95, 0.28);
-  --color-accent-dim: rgba(217, 118, 95, 0.08);
-  --color-text-primary: var(--color-ink);
-  --color-text-secondary: var(--color-muted);
+  --color-accent-glow: rgba(217, 118, 95, 0.35);
+  --color-accent-dim: rgba(217, 118, 95, 0.14);
+  --color-text-primary: var(--color-canvas);
+  --color-text-secondary: #A8A49C;
   --color-text-muted: var(--color-muted);
-  --color-border: var(--color-line);
-  --color-glass: rgba(250, 249, 246, 0.85);
+  --color-border: rgba(236, 234, 228, 0.1);
+  --color-glass: rgba(27, 26, 24, 0.82);
+  --color-glass-scrolled: rgba(27, 26, 24, 0.94);
 
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-size-hero: clamp(2.25rem, 4vw, 3rem); /* 36px - 48px */
@@ -33,6 +35,7 @@
   --nav-height: 72px;
   --max-width: 1100px;
   --radius-pill: 100px;
+  --radius-sm: 12px;
   --radius-md: 16px;
 
   --transition-fast: 0.2s ease;
@@ -100,21 +103,21 @@ img {
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  background: rgba(250, 249, 246, 0.8);
+  background: var(--color-glass);
   backdrop-filter: blur(20px) saturate(1.2);
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 0 28px;
   transition: background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
-  background: rgba(250, 249, 246, 0.95);
-  border-color: var(--color-line);
+  background: var(--color-glass-scrolled);
+  border-color: var(--color-border);
   box-shadow:
-    0 4px 20px rgba(27, 26, 24, 0.05),
-    0 1px 3px rgba(27, 26, 24, 0.03);
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .navbar .container {
@@ -138,14 +141,14 @@ img {
   height: 40px;
   border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 2px 8px rgba(27, 26, 24, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .nav-brand__name {
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   text-transform: lowercase;
 }
 
@@ -158,9 +161,9 @@ img {
   font-size: var(--font-size-nav);
   font-weight: 600;
   font-family: var(--font-family);
-  color: var(--color-canvas);
-  background: var(--color-ink);
-  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  background: var(--color-canvas);
+  border: 1px solid var(--color-canvas);
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -234,7 +237,7 @@ img {
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 20px;
-  color: var(--color-ink);
+  color: var(--color-text-primary);
 
   /* Animation */
   opacity: 0;
@@ -250,7 +253,7 @@ img {
 .hero__subheadline {
   font-size: var(--font-size-sub);
   font-weight: 400;
-  color: var(--color-muted);
+  color: var(--color-text-secondary);
   line-height: 1.65;
   margin-bottom: 36px;
 
@@ -285,8 +288,8 @@ img {
   max-width: 100%;
   display: block;
   margin: 0 auto;
-  filter: drop-shadow(0 24px 44px rgba(27, 26, 24, 0.12))
-          drop-shadow(0 2px 10px rgba(27, 26, 24, 0.05));
+  filter: drop-shadow(0 24px 50px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 2px 15px rgba(217, 118, 95, 0.15));
 }
 
 /* Glow under device */
@@ -298,8 +301,8 @@ img {
   transform: translateX(-50%);
   width: 60%;
   height: 60px;
-  background: radial-gradient(ellipse, rgba(217, 118, 95, 0.15) 0%, transparent 70%);
-  filter: blur(20px);
+  background: radial-gradient(ellipse, rgba(217, 118, 95, 0.25) 0%, transparent 70%);
+  filter: blur(25px);
   pointer-events: none;
 }
 
@@ -340,8 +343,8 @@ img {
    ============================================ */
 .footer {
   padding: 32px 24px;
-  background: var(--color-canvas);
-  border-top: 1px solid var(--color-line);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer .container {
@@ -359,7 +362,7 @@ img {
 }
 
 .footer__link {
-  color: var(--color-muted);
+  color: var(--color-text-secondary);
   transition: color var(--transition-fast);
 }
 
@@ -368,7 +371,7 @@ img {
 }
 
 .footer__separator {
-  color: var(--color-line);
+  color: var(--color-border);
   user-select: none;
 }
 
@@ -499,7 +502,7 @@ img {
 
 .legal__header {
   margin-bottom: 48px;
-  border-bottom: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 24px;
 }
 
@@ -508,22 +511,22 @@ img {
   font-weight: 800;
   margin-bottom: 12px;
   letter-spacing: -0.01em;
-  color: var(--color-ink);
+  color: var(--color-text-primary);
 }
 
 .legal__date {
   font-size: var(--font-size-small);
-  color: var(--color-muted);
+  color: var(--color-text-secondary);
 }
 
 .legal__body {
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   font-size: 0.975rem;
   line-height: 1.8;
 }
 
 .legal__body h2 {
-  color: var(--color-ink);
+  color: var(--color-text-primary);
   font-size: 1.4rem;
   font-weight: 700;
   margin-top: 40px;
@@ -554,6 +557,52 @@ img {
   opacity: 0.85;
 }
 
+.legal__table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 24px 0 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+
+.legal__table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.legal__table th,
+.legal__table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.legal__table th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.legal__table tr:last-child td {
+  border-bottom: none;
+}
+
+.legal__table td:first-child {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  min-width: 160px;
+}
+
+.legal__table td:nth-child(2) {
+  min-width: 120px;
+  color: var(--color-text-secondary);
+}
+
 /* ============================================
    PALETTE UTILITY CLASSES
    ============================================ */
@@ -567,5 +616,5 @@ img {
 .bg-ink      { background-color: var(--color-ink); }
 .bg-rival    { background-color: var(--color-rival); }
 
-.border-line { border-color: var(--color-line); }
+.border-line { border-color: var(--color-border); }
 
