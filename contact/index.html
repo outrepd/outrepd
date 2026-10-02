@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — OUTREPD</title>
+  <meta name="description" content="Get in touch with the OUTREPD team. Reach us at support@outrepd.com for questions, feedback, or support.">
+  <meta name="theme-color" content="#1B1A18">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+  <link rel="stylesheet" href="/style.css?v=2.3">
+</head>
+<body>
+
+  <!-- ========================================
+       NAVIGATION
+       ======================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="/" class="nav-brand" id="nav-brand">
+        <img src="/assets/favicon.png" alt="outrepd Logo" class="nav-brand__icon" id="nav-logo">
+        <span class="nav-brand__name">outrepd</span>
+      </a>
+      <a href="/" class="nav-cta" id="nav-download-btn">
+        Download OUTREPD
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       CONTACT CONTENT
+       ======================================== -->
+  <main class="legal">
+    <div class="legal__header">
+      <h1 class="legal__title">Contact Us</h1>
+      <p class="legal__date">outrepd · We'd love to hear from you</p>
+    </div>
+
+    <div class="legal__body">
+      <p>Have a question, need help with your account, or want to report an issue? We're here to help.</p>
+
+      <h2>Email us</h2>
+      <p>The best way to reach us is by email. We aim to respond within 24–48 hours.</p>
+      <p style="font-size: 1.25rem; font-weight: 600;"><a href="mailto:support@outrepd.com">support@outrepd.com</a></p>
+
+      <h2>What we can help with</h2>
+      <ul>
+        <li>Account issues — login problems, username changes, or account recovery</li>
+        <li>Subscription questions — billing, cancellations, or plan changes</li>
+        <li>Bug reports — something not working as expected</li>
+        <li>Feedback — ideas, suggestions, or feature requests</li>
+        <li>Data requests — export or delete your data</li>
+        <li>Reports — reporting objectionable content or abusive behaviour</li>
+      </ul>
+
+      <h2>Account deletion</h2>
+      <p>To delete your account, go to Settings → Data → Delete account inside the app. If you no longer have access to the app, email <a href="mailto:support@outrepd.com">support@outrepd.com</a> from the email address on your account (or include your username) with the subject "Delete my outrepd account". We will process your request within 30 days.</p>
+
+      <h2>Who we are</h2>
+      <p>outrepd is built and run by MK Labs.</p>
+    </div>
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__links">
+        <a href="/privacy" class="footer__link" id="footer-privacy">Privacy Policy</a>
+        <span class="footer__separator">·</span>
+        <a href="/terms" class="footer__link" id="footer-terms">Terms of Service</a>
+        <span class="footer__separator">·</span>
+        <a href="/contact" class="footer__link" id="footer-contact">Contact Us</a>
+      </div>
+      <p class="footer__copy">&copy; 2026 OUTREPD. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Simple script for contact page scroll effects -->
+  <script>
+    (function () {
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 20) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
