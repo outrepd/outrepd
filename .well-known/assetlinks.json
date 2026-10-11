@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.outrepd.outrepd",
+      "sha256_cert_fingerprints": [
+        "93:19:AC:A3:AC:BD:85:34:04:9D:BF:6F:D7:CD:B5:D2:CC:1D:D8:4F:AA:E4:C3:39:4B:A6:8B:45:FF:03:7A:FB"
+      ]
+    }
+  }
+]
