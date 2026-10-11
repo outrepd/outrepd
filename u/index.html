@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="/assets/logo-icon.png">
 
   <link rel="stylesheet" href="/style.css?v=2.2">
-  <link rel="stylesheet" href="/u/card.css?v=1">
+  <link rel="stylesheet" href="/u/card.css?v=2">
   <style>
     html, body {
       background-color: #FAF9F6 !important;
@@ -80,7 +80,21 @@
         </div>
 
         <p class="card-page__tagline" id="card-tagline"></p>
-        <a href="#" class="nav-cta card-page__cta" id="card-download-btn">Download OUTREPD to duel them</a>
+
+        <!-- Shown only when the link carries a code (?code=123456): the
+             invite a yearly subscriber sends from the app. Typed once at
+             sign-up, it gives a week of OUTREPD Pro. -->
+        <div class="invite-code" id="invite-code" hidden>
+          <p class="invite-code__label">7 days free with this code</p>
+          <button type="button" class="invite-code__value" id="invite-code-value"
+                  aria-label="Copy the code"></button>
+          <p class="invite-code__hint" id="invite-code-hint">Type it when you sign up. Tap to copy.</p>
+        </div>
+
+        <div class="store-buttons">
+          <a href="#" class="nav-cta card-page__cta store-button" id="card-download-btn">Download OUTREPD to duel them</a>
+          <a href="#" class="store-button store-button--other" id="card-other-store"></a>
+        </div>
       </div>
 
     </div>
@@ -101,6 +115,6 @@
   </footer>
 
   <script src="/script.js"></script>
-  <script src="/u/card.js"></script>
+  <script src="/u/card.js?v=2"></script>
 </body>
 </html>

@@ -28,6 +28,48 @@
   ];
   var DIVISIONS = ['V', 'IV', 'III', 'II', 'I'];
 
+  var APP_STORE = 'https://apps.apple.com/app/id6817853725';
+  var GOOGLE_PLAY =
+    'https://play.google.com/store/apps/details?id=com.outrepd.outrepd';
+
+  // The store this phone uses first, the other one as a plain link under it:
+  // a friend on an iPhone should not have to find their button.
+  function wireStores() {
+    var apple = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
+    var first = apple ? APP_STORE : GOOGLE_PLAY;
+    ['nav-download-btn', 'missing-download-btn', 'card-download-btn'].forEach(
+      function (id) {
+        var el = document.getElementById(id);
+        if (el) el.href = first;
+      },
+    );
+    var other = document.getElementById('card-other-store');
+    if (other) {
+      other.href = apple ? GOOGLE_PLAY : APP_STORE;
+      other.textContent = apple ? 'Get it on Google Play' : 'Download on the App Store';
+    }
+  }
+
+  // A friend's code, from an invite link: six digits, nothing else.
+  function getCode() {
+    var code = new URLSearchParams(location.search).get('code');
+    return code && /^[0-9]{6}$/.test(code) ? code : null;
+  }
+
+  function showCode(code) {
+    var box = document.getElementById('invite-code');
+    var value = document.getElementById('invite-code-value');
+    var hint = document.getElementById('invite-code-hint');
+    value.textContent = '#' + code;
+    box.hidden = false;
+    value.addEventListener('click', function () {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(code).then(function () {
+        hint.textContent = 'Copied. Paste it when you sign up.';
+      });
+    });
+  }
+
   function getUsername() {
     var params = new URLSearchParams(location.search);
     var fromQuery = params.get('name');
@@ -116,6 +158,7 @@
   }
 
   async function main() {
+    wireStores();
     var username = getUsername();
     if (!username) {
       show('state-missing');
@@ -128,6 +171,8 @@
         return;
       }
       render(card, username);
+      var code = getCode();
+      if (code) showCode(code);
       show('state-card');
     } catch (error) {
       console.error('Could not load the card:', error);
