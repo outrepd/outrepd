@@ -313,10 +313,10 @@ h1 span {
 .iphone__island {
   position: absolute;
   z-index: 2;
-  top: 3.6em;
+  top: 2.6em;
   left: 50%;
-  width: 30em;
-  height: 8.6em;
+  width: 28em;
+  height: 7.8em;
   transform: translateX(-50%);
   border-radius: 99em;
   background: #000;
@@ -986,13 +986,21 @@ section[id] {
 
 /* The camera screen keeps the island clear too, its picture cropped from
    the top and bottom alike. */
+/* A camera screen fills the glass to its very top, under the island, and
+   whole: its picture is the screen's own shape, so nothing is cropped.
+   No status bar over it: the app's own card is up there. */
 .iphone--bleed .iphone__screen {
+  padding-top: 0;
   background: #000;
 }
 
 .iphone--bleed .iphone__screen img {
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center top;
+}
+
+.iphone--bleed .iphone__status {
+  display: none;
 }
 
 .iphone__status {
