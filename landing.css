@@ -292,11 +292,13 @@ h1 span {
   background: #121110;
 }
 
+/* The whole screen, its bar included: the app's page is the colour round
+   it, so the sliver either side never shows. */
 .iphone__screen img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: center top;
 }
 
 /* The glare: a sheet of light across the glass, top left. */
@@ -789,6 +791,15 @@ h2 {
   text-align: center;
 }
 
+/* The heading, the line under it and the badges on one centre line. */
+.closing__box h2 {
+  margin-top: 0;
+}
+
+.closing__box .intro {
+  margin: 0 auto;
+}
+
 .closing__box .stores {
   justify-content: center;
 }
@@ -980,6 +991,7 @@ section[id] {
 }
 
 .iphone--bleed .iphone__screen img {
+  object-fit: cover;
   object-position: center 40%;
 }
 
