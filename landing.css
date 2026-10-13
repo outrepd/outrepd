@@ -1,0 +1,999 @@
+/* ============================================
+   OUTREPD — the landing page
+
+   The app's own palette (lib/theme.dart's dark theme): the warm near-black
+   page, cream for "you" and every primary action, terracotta for the rival.
+   ============================================ */
+
+:root {
+  --page: #121110;
+  --surface: #1C1A18;
+  --raised: #262320;
+  --line: #2C2926;
+  --text: #F5EFE4;
+  --muted: #8F8880;
+  --brand: #E8DCC8;
+  --rival: #E8846B;
+  --gold: #E0B145;
+  --max: 1120px;
+  --radius: 22px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--page);
+  color: var(--text);
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --- navigation --- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(18, 17, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(44, 41, 38, 0.7);
+}
+
+.nav .wrap {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.brand img {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.nav__links {
+  display: flex;
+  gap: 26px;
+  margin-left: auto;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.nav__links a:hover {
+  color: var(--text);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: var(--brand);
+  color: #121110;
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(232, 220, 200, 0.18);
+}
+
+/* --- hero --- */
+.hero {
+  position: relative;
+  padding: 72px 0 40px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 820px;
+  height: 820px;
+  background: radial-gradient(circle, rgba(232, 132, 107, 0.16), transparent 62%);
+  pointer-events: none;
+}
+
+.hero .wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.eyebrow i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rival);
+  box-shadow: 0 0 0 4px rgba(232, 132, 107, 0.2);
+}
+
+h1 {
+  margin: 22px 0 18px;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h1 span {
+  color: var(--rival);
+}
+
+.lead {
+  max-width: 520px;
+  font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+  color: #BDB6AC;
+}
+
+.stores {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.badge {
+  display: block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.badge:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.badge img {
+  height: 54px;
+  width: auto;
+}
+
+/* Google's badge carries its own clear space round it; this sets the badge
+   itself level with Apple's. */
+.badge--play img {
+  height: 80px;
+  margin: -13px -10px;
+}
+
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.trust svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+/* --- phones ---
+   An iPhone in natural titanium, drawn rather than loaded: the band, the
+   black glass round the screen, the Dynamic Island, the buttons, and a
+   glare across the glass. Everything is in em of a hundredth of its width,
+   so one --w sizes the whole phone. */
+.iphone {
+  --w: 300px;
+  position: relative;
+  width: var(--w);
+  font-size: calc(var(--w) / 100);
+  aspect-ratio: 70.6 / 146.6;
+  flex: none;
+}
+
+.iphone__band {
+  position: absolute;
+  inset: 0;
+  border-radius: 17em;
+  padding: 1.25em;
+  background:
+    linear-gradient(135deg, #8E877D 0%, #3A3631 14%, #1E1C1A 30%, #6F6960 48%, #24211E 64%, #9A9388 84%, #3B3732 100%);
+  box-shadow:
+    inset 0 0 0 0.3em rgba(255, 255, 255, 0.10),
+    inset 0 0 0.6em 0.1em rgba(0, 0, 0, 0.6),
+    0 0 0 0.25em rgba(0, 0, 0, 0.55),
+    0 4em 9em rgba(0, 0, 0, 0.6),
+    0 1.2em 2.4em rgba(0, 0, 0, 0.45);
+}
+
+.iphone__glass {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15.8em;
+  padding: 3.1em;
+  background: #050505;
+  box-shadow: inset 0 0 0 0.25em #1A1A1A;
+}
+
+.iphone__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12.8em;
+  overflow: hidden;
+  background: #121110;
+}
+
+.iphone__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* The glare: a sheet of light across the glass, top left. */
+.iphone__screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 26%, rgba(255, 255, 255, 0) 42%);
+  pointer-events: none;
+}
+
+.iphone__island {
+  position: absolute;
+  z-index: 2;
+  top: 3.6em;
+  left: 50%;
+  width: 30em;
+  height: 8.6em;
+  transform: translateX(-50%);
+  border-radius: 99em;
+  background: #000;
+}
+
+.iphone__island::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 6.2em;
+  width: 3em;
+  height: 3em;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2B3A55 0%, #0B0F17 55%, #000 100%);
+}
+
+.iphone__button {
+  position: absolute;
+  width: 1.1em;
+  border-radius: 0.6em;
+  background: linear-gradient(90deg, #2A2724, #8A847B 45%, #3A3631);
+}
+
+.iphone__button--action { left: -0.85em; top: 18%; height: 5.5%; }
+.iphone__button--up { left: -0.85em; top: 27%; height: 9%; }
+.iphone__button--down { left: -0.85em; top: 38.5%; height: 9%; }
+.iphone__button--power { right: -0.85em; top: 29%; height: 14%; }
+
+/* The hero's phone, turned towards the reader, on a thicker slab. */
+.tilt {
+  perspective: 1600px;
+}
+
+.iphone--tilt {
+  transform: rotateY(-16deg) rotateX(5deg) rotateZ(-3deg);
+  transform-style: preserve-3d;
+}
+
+.iphone--tilt .iphone__band {
+  box-shadow:
+    inset 0 0 0 0.3em rgba(255, 255, 255, 0.12),
+    inset 0 0 0.6em 0.1em rgba(0, 0, 0, 0.6),
+    1.6em 0.8em 0 -0.3em #2C2925,
+    2.4em 1.4em 0 -0.6em #1A1816,
+    0 0 0 0.25em rgba(0, 0, 0, 0.55),
+    3em 5em 10em rgba(0, 0, 0, 0.65);
+}
+
+/* Light streaks behind the hero's phone: thin bright lines, each in a
+   soft glow of its own colour. */
+.streaks {
+  position: absolute;
+  inset: -20% -40%;
+  pointer-events: none;
+  /* Fading out before the box ends, so no line stops at an edge or runs
+     under the words beside the phone. */
+  -webkit-mask-image: radial-gradient(closest-side, #000 45%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 45%, transparent 100%);
+  background:
+    linear-gradient(155deg, transparent 49.75%, rgba(255, 226, 210, 0.95) 50%, transparent 50.25%),
+    linear-gradient(155deg, transparent 47.5%, rgba(232, 132, 107, 0.32) 50%, transparent 52.5%),
+    linear-gradient(155deg, transparent 61.85%, rgba(255, 214, 196, 0.7) 62%, transparent 62.15%),
+    linear-gradient(155deg, transparent 60.5%, rgba(232, 132, 107, 0.22) 62%, transparent 63.5%),
+    linear-gradient(155deg, transparent 37.9%, rgba(247, 216, 127, 0.55) 38%, transparent 38.1%),
+    linear-gradient(155deg, transparent 36.5%, rgba(224, 177, 69, 0.16) 38%, transparent 39.5%);
+}
+
+.streaks::after {
+  content: '';
+  position: absolute;
+  inset: 25% 32%;
+  background: radial-gradient(closest-side, rgba(232, 132, 107, 0.22), transparent);
+}
+
+.hero__art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 18px;
+  background: rgba(28, 26, 24, 0.92);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+}
+
+.float b {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+.float small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.float svg {
+  overflow: visible;
+}
+
+.float--lp {
+  left: 0;
+  top: 52%;
+}
+
+.float--lp b {
+  color: var(--gold);
+}
+
+.float--score {
+  right: 0;
+  bottom: 16%;
+  padding: 12px 18px;
+}
+
+.float--score b span {
+  color: var(--rival);
+}
+
+/* The hero's picture: the phone on its own dark ground, faded into the
+   page at every edge so it has no edges of its own. */
+.hero__shot {
+  display: block;
+  width: min(100%, 410px);
+}
+
+.hero__shot img {
+  width: 100%;
+  height: auto;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 9%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 7%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 9%, #000 93%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 7%, #000 92%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* B's hero: the badge behind the phone. */
+.hero__crest {
+  position: absolute;
+  z-index: 2;
+  bottom: 9%;
+  left: -9%;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55));
+}
+
+.hero__crest svg {
+  overflow: visible;
+}
+
+.hero--crest .hero__crest svg {
+  width: 230px;
+  height: auto;
+}
+
+/* --- facts --- */
+.facts {
+  padding: 26px 0 10px;
+}
+
+.facts .wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.fact {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.fact b {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.fact span {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* --- sections --- */
+section.block {
+  padding: 96px 0 0;
+}
+
+.kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--rival);
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 12px 0 14px;
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.intro {
+  max-width: 620px;
+  color: #BDB6AC;
+  font-size: 1.05rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .intro {
+  margin: 0 auto;
+}
+
+/* how it works */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.step {
+  position: relative;
+  padding: 28px 26px 30px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+.step__n {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--raised);
+  font-weight: 800;
+  color: var(--brand);
+  margin-bottom: 18px;
+}
+
+.step h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+/* feature rows */
+.feature .wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.feature--flip .feature__art {
+  order: -1;
+}
+
+.feature__art {
+  display: flex;
+  justify-content: center;
+}
+
+.ticks {
+  list-style: none;
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.ticks li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: #D8D1C6;
+}
+
+.ticks li::before {
+  content: '';
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--raised) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.6L14 7.6' fill='none' stroke='%23E8DCC8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px no-repeat;
+}
+
+/* the ladder */
+.ladder {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 48px;
+  align-items: end;
+}
+
+.rung {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 6px 18px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(38, 35, 32, 0.6), rgba(28, 26, 24, 0.2));
+  border: 1px solid var(--line);
+}
+
+.rung svg {
+  overflow: visible;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+}
+
+.rung b {
+  font-size: 0.95rem;
+}
+
+/* more inside */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.card {
+  padding: 24px 22px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.card__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.card__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+/* screens */
+.gallery {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.gallery .iphone {
+  --w: 230px;
+}
+
+.gallery figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.gallery figcaption {
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* faq */
+.faq {
+  max-width: 760px;
+  margin: 40px auto 0;
+  display: grid;
+  gap: 10px;
+}
+
+.faq details {
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 0 22px;
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 0;
+  font-weight: 650;
+  font-size: 1.05rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: '+';
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.faq details[open] summary::after {
+  content: '–';
+}
+
+.faq details p {
+  padding: 0 0 20px;
+  color: #BDB6AC;
+}
+
+/* closing call */
+.closing {
+  margin: 110px 0 0;
+}
+
+.closing__box {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 40px;
+  border-radius: 32px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(600px 300px at 50% 0%, rgba(232, 132, 107, 0.2), transparent 70%),
+    var(--surface);
+  text-align: center;
+}
+
+.closing__box .stores {
+  justify-content: center;
+}
+
+/* footer */
+.footer {
+  margin-top: 90px;
+  border-top: 1px solid var(--line);
+  padding: 34px 0 44px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.footer nav a:hover {
+  color: var(--text);
+}
+
+/* --- phones and small tablets --- */
+@media (max-width: 880px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav .button {
+    margin-left: auto;
+    height: 40px;
+    padding: 0 16px;
+    font-size: 0.88rem;
+  }
+
+  .hero {
+    padding: 40px 0 10px;
+  }
+
+  .hero .wrap,
+  .feature .wrap {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .hero__copy {
+    text-align: center;
+  }
+
+  .lead {
+    margin: 0 auto;
+  }
+
+  .stores,
+  .trust {
+    justify-content: center;
+  }
+
+  .feature--flip .feature__art {
+    order: 0;
+  }
+
+  .iphone {
+    --w: 250px;
+  }
+
+  .float--lp {
+    left: -4px;
+  }
+
+  .hero--crest .hero__crest {
+    left: -10px;
+    bottom: 6%;
+  }
+
+  .hero--crest .hero__crest svg {
+    width: 150px;
+  }
+
+  .float--score {
+    right: -4px;
+  }
+
+  .facts .wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  section.block {
+    padding-top: 76px;
+  }
+
+  .steps,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ladder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .rung {
+    width: calc(25% - 6px);
+    padding: 16px 4px 12px;
+    gap: 8px;
+  }
+
+  .rung b {
+    font-size: 0.78rem;
+  }
+
+  .gallery {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 24px 10px;
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+
+  .gallery figure {
+    scroll-snap-align: center;
+    flex: none;
+  }
+
+  .gallery .iphone {
+    --w: 200px;
+  }
+
+  .closing__box {
+    padding: 48px 22px;
+  }
+
+  .footer .wrap {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .wrap {
+    padding: 0 16px;
+  }
+
+  .iphone {
+    --w: 226px;
+  }
+
+  .badge img {
+    height: 48px;
+  }
+
+  .badge--play img {
+    height: 71px;
+    margin: -11px -9px;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 68px;
+}
+
+/* The status bar a real screenshot would have: the screens are drawn
+   without one, so the island would otherwise sit on top of them. A camera
+   screen runs under it, full bleed. */
+.iphone__screen {
+  padding-top: 12.6em;
+}
+
+/* The camera screen keeps the island clear too, its picture cropped from
+   the top and bottom alike. */
+.iphone--bleed .iphone__screen {
+  background: #000;
+}
+
+.iphone--bleed .iphone__screen img {
+  object-position: center 40%;
+}
+
+.iphone__status {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Its own type size, so the measures below are in it: 12.6 of the
+     phone's em is the bar's height. */
+  font: 600 4.6em/1 -apple-system, 'SF Pro Text', 'Inter', sans-serif;
+  height: 2.74em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2em 1.5em 0 2.3em;
+  color: #F5EFE4;
+}
+
+.iphone__status svg {
+  height: 0.82em;
+  width: auto;
+}
+
