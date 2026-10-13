@@ -10,32 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/png" href="/assets/logo-icon.png">
-  <link rel="stylesheet" href="/style.css?v=2.2">
-  <style>
-    html, body {
-      background-color: #FAF9F6 !important;
-      color: #1B1A18 !important;
-    }
-    .notfound {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-    .notfound__title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .notfound__body {
-      color: var(--color-muted);
-      margin-bottom: 24px;
-    }
-  </style>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="stylesheet" href="/landing.css?v=1">
+  <link rel="stylesheet" href="/pages.css?v=1">
   <script>
     // GitHub Pages has no server-side routing: an unknown path like
     // /u/mokhtar_y lands here instead of at u/index.html. Hand it the
@@ -50,20 +27,27 @@
   </script>
 </head>
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="/" class="nav-brand">
-        <img src="/assets/logo-icon.png?v=3" alt="outrepd Logo" class="nav-brand__icon">
-        <span class="nav-brand__name">outrepd</span>
-      </a>
-      <a href="#" class="nav-cta">Download OUTREPD</a>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/favicon.png" alt="">OUTREPD</a>
+      <nav class="nav__links"><a href="/#how">How it works</a><a href="/#ranks">Ranks</a><a href="/#friends">Friends</a><a href="/#faq">FAQ</a></nav>
+      <a class="button" id="nav-download-btn" href="/#get">Download</a>
     </div>
-  </nav>
+  </header>
 
   <main class="notfound">
-    <p class="notfound__title">Page not found</p>
-    <p class="notfound__body">That link doesn't lead anywhere on outrepd.</p>
-    <a href="/" class="nav-cta">Back home</a>
+    <p class="notfound__code">404</p>
+    <h1 class="notfound__title">Page not found</h1>
+    <p class="notfound__body">That link doesn't lead anywhere on OUTREPD.</p>
+    <a class="button" href="/">Back home</a>
   </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/favicon.png" alt="">OUTREPD</a>
+      <nav><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></nav>
+      <span>&copy; 2026 OUTREPD</span>
+    </div>
+  </footer>
 </body>
 </html>

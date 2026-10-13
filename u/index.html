@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OUTREPD — Duel me</title>
   <meta name="description" content="Live 1v1 push-up showdowns decided by your camera. See their rank, then duel them.">
-  <meta name="theme-color" content="#FAF9F6">
+  <meta name="theme-color" content="#121110">
 
   <!-- Open Graph. Static on purpose: a page whose own JS renders the card
        has nothing to show a crawler, which never runs that JS. A specific
@@ -19,34 +19,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/png" href="/assets/logo-icon.png">
-  <link rel="apple-touch-icon" href="/assets/logo-icon.png">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
 
-  <link rel="stylesheet" href="/style.css?v=2.2">
-  <link rel="stylesheet" href="/u/card.css?v=3">
-  <style>
-    html, body {
-      background-color: #FAF9F6 !important;
-      color: #1B1A18 !important;
-    }
-  </style>
+  <link rel="stylesheet" href="/landing.css?v=1">
+  <link rel="stylesheet" href="/pages.css?v=1">
+  <link rel="stylesheet" href="/u/card.css?v=4">
 </head>
 <body>
 
-  <!-- ========================================
-       NAVIGATION
-       ======================================== -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="/" class="nav-brand" id="nav-brand">
-        <img src="/assets/logo-icon.png?v=3" alt="outrepd Logo" class="nav-brand__icon" id="nav-logo">
-        <span class="nav-brand__name">outrepd</span>
-      </a>
-      <a href="#" class="nav-cta" id="nav-download-btn">
-        Download OUTREPD
-      </a>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/favicon.png" alt="">OUTREPD</a>
+      <nav class="nav__links"><a href="/#how">How it works</a><a href="/#ranks">Ranks</a><a href="/#friends">Friends</a><a href="/#faq">FAQ</a></nav>
+      <a class="button" id="nav-download-btn" href="/#get">Download</a>
     </div>
-  </nav>
+  </header>
 
   <!-- ========================================
        CARD
@@ -61,7 +49,7 @@
       <div class="card-state" id="state-missing" hidden>
         <p class="card-missing__title">No lifter by that name</p>
         <p class="card-missing__body">The link may be old, or the account may not exist anymore.</p>
-        <a href="#" class="nav-cta" id="missing-download-btn">Download OUTREPD</a>
+        <a href="#" class="button" id="missing-download-btn">Download OUTREPD</a>
       </div>
 
       <div class="card-state" id="state-card" hidden>
@@ -92,7 +80,7 @@
         </div>
 
         <div class="store-buttons">
-          <a href="#" class="nav-cta card-page__cta store-button" id="card-download-btn">Download OUTREPD to duel them</a>
+          <a href="#" class="button card-page__cta" id="card-download-btn">Download OUTREPD to duel them</a>
           <a href="#" class="store-button store-button--other" id="card-other-store"></a>
         </div>
       </div>
@@ -100,21 +88,13 @@
     </div>
   </main>
 
-  <!-- ========================================
-       FOOTER
-       ======================================== -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer__links">
-        <a href="/privacy" class="footer__link" id="footer-privacy">Privacy Policy</a>
-        <span class="footer__separator">·</span>
-        <a href="/terms" class="footer__link" id="footer-terms">Terms of Service</a>
-      </div>
-      <p class="footer__copy">&copy; 2026 OUTREPD. All rights reserved.</p>
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/favicon.png" alt="">OUTREPD</a>
+      <nav><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></nav>
+      <span>&copy; 2026 OUTREPD</span>
     </div>
   </footer>
-
-  <script src="/script.js"></script>
   <script src="/u/crest.js?v=2"></script>
   <script src="/u/card.js?v=3"></script>
 </body>

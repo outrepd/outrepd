@@ -1,0 +1,152 @@
+/* ============================================
+   OUTREPD — the pages beside the home page
+
+   The privacy policy, the terms, contact, the not-found page and the
+   player card, in the home page's look: its header, footer and palette
+   come from landing.css, and this file adds what only these pages need.
+   ============================================ */
+
+/* --- the legal pages and contact --- */
+.legal {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 64px 24px 0;
+}
+
+.legal__header {
+  padding-bottom: 28px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal__title {
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.legal__date {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.legal__body h2 {
+  margin: 42px 0 12px;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.legal__body h3 {
+  margin: 28px 0 10px;
+  font-size: 1.1rem;
+}
+
+.legal__body p,
+.legal__body li {
+  color: #CFC8BD;
+  line-height: 1.75;
+}
+
+.legal__body p {
+  margin-bottom: 14px;
+}
+
+.legal__body ul,
+.legal__body ol {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 18px 22px;
+}
+
+.legal__body strong {
+  color: var(--text);
+}
+
+.legal__body a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-color: rgba(232, 220, 200, 0.4);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.legal__body a:hover {
+  text-decoration-color: var(--brand);
+}
+
+.legal__table-container {
+  margin: 16px 0 26px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.legal__table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+.legal__table th,
+.legal__table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+  color: #CFC8BD;
+  line-height: 1.6;
+}
+
+.legal__table th {
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 650;
+}
+
+.legal__table tr:last-child td {
+  border-bottom: 0;
+}
+
+.legal__table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* --- not found --- */
+.notfound {
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px 0;
+  text-align: center;
+}
+
+.notfound__code {
+  font-size: clamp(5rem, 16vw, 8.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--rival);
+}
+
+.notfound__title {
+  margin: 14px 0 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.notfound__body {
+  margin-bottom: 28px;
+  color: var(--muted);
+}
+
+/* --- the player card's page --- */
+.card-page {
+  display: flex;
+  justify-content: center;
+  padding: 56px 20px 0;
+}

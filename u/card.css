@@ -1,19 +1,10 @@
 /* ============================================
    OUTREPD — the /u/<username> card page
 
-   Always dark, on purpose: this card is the same object the app itself
-   hands out as an image, so it has to look identical here whether the
-   reader's phone is in light or dark mode. The page around it stays on the
-   site's own light theme — only the card is the app's own dark palette.
+   Dark, as the app is and the card it hands out as an image is: the page
+   wears the home page's look (landing.css), and the card sits on it lit
+   from above in its tier's colour.
    ============================================ */
-
-.card-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--nav-height) + 48px) 20px 60px;
-}
 
 .card-page__inner {
   width: 100%;
@@ -42,8 +33,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 3px solid var(--color-line);
-  border-top-color: var(--color-rival);
+  border: 3px solid var(--line);
+  border-top-color: var(--rival);
   animation: card-spin 0.8s linear infinite;
   margin: 60px 0;
 }
@@ -56,13 +47,13 @@
 .card-missing__title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-ink);
+  color: var(--text);
   margin: 40px 0 8px;
 }
 
 .card-missing__body {
   font-size: 0.9rem;
-  color: var(--color-muted);
+  color: var(--muted);
   text-align: center;
   margin-bottom: 24px;
 }
@@ -70,15 +61,17 @@
 /* --- the card itself --- */
 .rank-card {
   width: 100%;
-  background: #121110;
-  border: 0.5px solid #2C2926;
+  background:
+    radial-gradient(420px 220px at 50% 0%, color-mix(in srgb, var(--tier-color, #8F8880) 16%, transparent), transparent 72%),
+    var(--surface);
+  border: 1px solid var(--line);
   border-radius: 22px;
   padding: 26px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 24px 44px rgba(27, 26, 24, 0.18);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
 }
 
 /* The tier's badge, as the app draws it (crest.js). Its glow reaches past
@@ -207,7 +200,7 @@
 .card-page__tagline {
   margin-top: 20px;
   font-size: 0.95rem;
-  color: var(--color-ink);
+  color: var(--text);
   text-align: center;
 }
 
