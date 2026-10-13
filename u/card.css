@@ -81,46 +81,74 @@
   box-shadow: 0 24px 44px rgba(27, 26, 24, 0.18);
 }
 
-.rank-card__badge {
-  position: relative;
-  overflow: hidden;
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
+/* The tier's badge, as the app draws it (crest.js). Its glow reaches past
+   its box, so nothing here clips it. */
+.rank-card__crest {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 10px;
+}
+
+.rank-card__crest svg,
+.rank-card__avatar svg {
+  display: block;
+  overflow: visible;
+}
+
+/* Their picture in the tier's frame, beside their name. */
+.rank-card__identity {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
-  border: 2px solid var(--tier-color, #8F8880);
-  background:
-    radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--tier-color, #8F8880) 30%, transparent), transparent 70%);
+  gap: 2px;
+  margin-bottom: 16px;
+  text-align: left;
 }
 
-.rank-card__badge::after {
+.rank-card__avatar {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank-card__avatar svg {
+  position: absolute;
+  inset: 0;
+}
+
+.rank-card__face {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #262320;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank-card__face::after {
   content: attr(data-initial);
-  font-size: 1.6rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: var(--tier-color, #8F8880);
+  color: #F5EFE4;
 }
 
 /* Sits over the initial rather than replacing it in the DOM — a photo that
    fails to load leaves the initial as the only thing that was ever there. */
-.rank-card__badge-photo {
+.rank-card__face-photo {
   position: absolute;
   inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.rank-card__identity {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 16px;
+.rank-card__who {
+  min-width: 0;
 }
-
-.rank-card__avatar { display: none; }
 
 .rank-card__name {
   font-size: 1.05rem;

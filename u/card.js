@@ -113,19 +113,33 @@
     document
       .getElementById('rank-card')
       .style.setProperty('--tier-color', tier.color);
-    var badge = document.getElementById('rank-badge');
-    badge.setAttribute('data-initial', username.charAt(0).toUpperCase());
-    // The initial stays as the background — cleared only once the photo has
+
+    // The tier's badge, and their picture in the tier's frame: the same two
+    // the app draws (crest.js), so the card here matches the one that sent
+    // the reader to it.
+    var tierIdx = Math.min(Math.max(card.tier_idx || 0, 0), 6);
+    document.getElementById('rank-crest').innerHTML =
+      window.OutrepdCrest.badge(tierIdx, 170);
+    var picture = 48;
+    var box = window.OutrepdCrest.frameBox(picture);
+    var avatar = document.getElementById('rank-avatar');
+    avatar.style.width = box.width + 'px';
+    avatar.style.height = box.height + 'px';
+    avatar.innerHTML = window.OutrepdCrest.frame(tierIdx, picture);
+    var face = document.createElement('span');
+    face.className = 'rank-card__face';
+    face.style.width = face.style.height = picture + 'px';
+    face.setAttribute('data-initial', username.charAt(0).toUpperCase());
+    // The initial stays as the background — covered only once the photo has
     // actually loaded, so a broken or slow image never leaves a blank circle.
-    var existingPhoto = badge.querySelector('img');
-    if (existingPhoto) existingPhoto.remove();
     if (card.avatar_url) {
       var photo = document.createElement('img');
-      photo.className = 'rank-card__badge-photo';
+      photo.className = 'rank-card__face-photo';
       photo.alt = '';
       photo.src = card.avatar_url;
-      badge.appendChild(photo);
+      face.appendChild(photo);
     }
+    avatar.appendChild(face);
     document.getElementById('rank-username').textContent = username;
     document.getElementById('rank-tier').textContent =
       tier.name + ' ' + division + ' · ' + (card.lp || 0) + ' / 100 LP';
