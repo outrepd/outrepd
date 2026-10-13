@@ -168,7 +168,7 @@
     });
 
     document.getElementById('card-tagline').textContent =
-      username + ' is waiting for a challenger on outrepd.';
+      username + ' is waiting for a challenger on OUTREPD.';
   }
 
   async function main() {

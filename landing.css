@@ -40,6 +40,14 @@ body {
   color: var(--text);
   line-height: 1.55;
   overflow-x: hidden;
+  /* A short page still ends with its footer at the bottom. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1 0 auto;
 }
 
 a {

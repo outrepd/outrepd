@@ -114,6 +114,66 @@
   font-weight: 600;
 }
 
+/* On a phone each row is a card: the data as its heading, then each
+   column under its own name, instead of a table to scroll sideways. */
+@media (max-width: 640px) {
+  .legal__table-container {
+    border: 0;
+    overflow: visible;
+  }
+
+  .legal__table {
+    min-width: 0;
+  }
+
+  .legal__table thead {
+    display: none;
+  }
+
+  .legal__table,
+  .legal__table tbody,
+  .legal__table tr,
+  .legal__table td {
+    display: block;
+  }
+
+  .legal__table tr {
+    margin-bottom: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+  }
+
+  .legal__table td {
+    padding: 0;
+    border: 0;
+  }
+
+  .legal__table td + td {
+    margin-top: 8px;
+  }
+
+  .legal__table td:first-child {
+    font-size: 1rem;
+  }
+
+  .legal__table td[data-label]:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
+
+/* A link to a section lands with its heading clear of the sticky bar. */
+.legal__body [id] {
+  scroll-margin-top: 84px;
+}
+
 /* --- not found --- */
 .notfound {
   min-height: 62vh;
