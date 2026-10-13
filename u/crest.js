@@ -25,12 +25,15 @@
     { base: '#8894A0', mid: '#AEBAC2', light: '#D8E2E8', wing: '#68747C', glow: 0.35,
       feathers: [[98, 40, 130, 32, 120, 48], [98, 54, 132, 50, 118, 64]] },
     { base: '#B8912F', mid: '#E0B145', light: '#F7D87F', wing: '#8A6518', glow: 0.5,
-      feathers: [[98, 40, 130, 32, 120, 48], [98, 54, 132, 50, 118, 64], [98, 68, 126, 70, 111, 80]] },
+      feathers: [[98, 40, 130, 32, 120, 48], [98, 54, 132, 50, 118, 64], [98, 68, 126, 70, 111, 80]],
+      fan: [[43, -15, 47], [51, -4, 45], [59, 7, 40]] },
     { base: '#8794A0', mid: '#BCC8D0', light: '#EDF4F8', wing: '#6F7C88', glow: 0.55, gem: '#DCE8EF',
-      feathers: [[98, 28, 128, 16, 121, 34], [98, 40, 132, 32, 121, 48], [98, 54, 134, 50, 119, 64], [98, 68, 127, 70, 112, 80]] },
+      feathers: [[98, 28, 128, 16, 121, 34], [98, 40, 132, 32, 121, 48], [98, 54, 134, 50, 119, 64], [98, 68, 127, 70, 112, 80]],
+      fan: [[40, -19, 49], [48, -9, 47], [56, 1, 44], [64, 11, 39]] },
     { base: '#2F8F88', mid: '#5FC9C0', light: '#A8EDE7', wing: '#25716C', glow: 0.65,
       chevron: '#CFF7F3', gem: '#A8EDE7', laurel: '#5FC9C0',
-      feathers: [[98, 26, 132, 12, 124, 32], [98, 40, 136, 30, 124, 48], [98, 54, 137, 50, 121, 65], [98, 68, 131, 70, 114, 81], [98, 80, 120, 88, 105, 92]] },
+      feathers: [[98, 26, 132, 12, 124, 32], [98, 40, 136, 30, 124, 48], [98, 54, 137, 50, 121, 65], [98, 68, 131, 70, 114, 81], [98, 80, 120, 88, 105, 92]],
+      fan: [[37, -22, 50], [45, -12, 49], [53, -2, 46], [61, 8, 42], [69, 18, 36]] },
     { base: '#CFC3B0', mid: '#F0E9DC', light: '#FFFFFF', wing: '#E8846B', glow: 0.75,
       chevron: '#E8846B', laurel: '#E8846B', crown: true, shieldDy: 2,
       feathers: [],
@@ -215,10 +218,12 @@
     }
 
     defs.push(across(id + 'wr', c.wing, tip), across(id + 'wl', tip, c.wing));
-    (master ? wings.slice().reverse() : wings).forEach(function (w) {
+    // A fan (Gold up) bottom feather first, each with a dark hairline.
+    var hairline = master ? '#9E4733' : mix(c.wing, '#000000', 0.45);
+    (c.fan ? wings.slice().reverse() : wings).forEach(function (w) {
       out += path(w.d, 'fill="url(#' + id + (w.side > 0 ? 'wr' : 'wl') + ')"');
-      if (master) {
-        out += path(w.d, 'fill="none" stroke="#9E4733" stroke-opacity="0.45" stroke-width="0.6" stroke-linejoin="round"');
+      if (c.fan) {
+        out += path(w.d, 'fill="none" stroke="' + hairline + '" stroke-opacity="0.45" stroke-width="0.6" stroke-linejoin="round"');
       }
       out += '<line x1="' + f(w.root[0]) + '" y1="' + f(w.root[1]) + '" x2="' + f(w.end[0]) + '" y2="' + f(w.end[1]) +
         '" stroke="' + tip + '" stroke-opacity="' + (master ? 0.8 : 0.7) + '" stroke-width="1"/>';
@@ -363,7 +368,7 @@
       defs.push(gradient(id + (side > 0 ? 'wr' : 'wl'), Math.min(inner, end), cy, Math.max(inner, end), cy,
         side > 0 ? [[0, c.wing], [1, tip]] : [[0, tip], [1, c.wing]]));
     });
-    (c.crown ? feathers.slice().reverse() : feathers).forEach(function (fe) {
+    (c.fan ? feathers.slice().reverse() : feathers).forEach(function (fe) {
       out += path(fe.d, 'fill="url(#' + id + (fe.side > 0 ? 'wr' : 'wl') + ')"');
       out += '<line x1="' + f(fe.root[0]) + '" y1="' + f(fe.root[1]) + '" x2="' + f(fe.end[0]) + '" y2="' +
         f(fe.end[1]) + '" stroke="' + tip + '" stroke-opacity="0.55" stroke-width="' + f(Math.max(0.6, r * 0.02)) + '"/>';
