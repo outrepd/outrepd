@@ -50,26 +50,6 @@
     }
   }
 
-  // A friend's code, from an invite link: six digits, nothing else.
-  function getCode() {
-    var code = new URLSearchParams(location.search).get('code');
-    return code && /^[0-9]{6}$/.test(code) ? code : null;
-  }
-
-  function showCode(code) {
-    var box = document.getElementById('invite-code');
-    var value = document.getElementById('invite-code-value');
-    var hint = document.getElementById('invite-code-hint');
-    value.textContent = '#' + code;
-    box.hidden = false;
-    value.addEventListener('click', function () {
-      if (!navigator.clipboard) return;
-      navigator.clipboard.writeText(code).then(function () {
-        hint.textContent = 'Copied. Paste it when you sign up.';
-      });
-    });
-  }
-
   function getUsername() {
     var params = new URLSearchParams(location.search);
     var fromQuery = params.get('name');
@@ -185,8 +165,6 @@
         return;
       }
       render(card, username);
-      var code = getCode();
-      if (code) showCode(code);
       show('state-card');
     } catch (error) {
       console.error('Could not load the card:', error);
