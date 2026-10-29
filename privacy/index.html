@@ -35,7 +35,7 @@
   <main class="legal">
     <div class="legal__header">
       <h1 class="legal__title">Privacy Policy</h1>
-      <p class="legal__date">outrepd · Last updated 12 October 2026</p>
+      <p class="legal__date">outrepd · Last updated 28 October 2026</p>
     </div>
 
     <div class="legal__body">
@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <td data-label="Data">Email address</td>
-              <td data-label="Required?">Only if you create an account with one</td>
+              <td data-label="Required?">Yes — the one on the Apple or Google account you sign in with (Apple lets you hide yours behind a relay address)</td>
               <td data-label="Why we use it">Signing in, and getting your account back on a new phone. Never shown to other people.</td>
             </tr>
             <tr>
@@ -90,9 +90,14 @@
               <td data-label="Why we use it">The ladder and your profile.</td>
             </tr>
             <tr>
-              <td data-label="Data">Live matches: who you played, when the round started, the rep count your phone sends every few seconds during it, and the result. While you search for a ranked live match, that you are searching and your rank level, for up to 15 seconds.</td>
+              <td data-label="Data">Live matches: who you played, when the round started, the rep count your phone sends every few seconds during it, and the result. While you search for a ranked live match, that you are searching and your rank level, for up to 15 seconds. After the match, whether you are still on its result screen.</td>
               <td data-label="Required?">Yes, to play live</td>
-              <td data-label="Why we use it">Pairing you with somebody live, showing each of you the other's count, and settling the match — including on the last count received if a phone loses its connection.</td>
+              <td data-label="Why we use it">Pairing you with somebody live, showing each of you the other's count, and settling the match — including on the last count received if a phone loses its connection. Telling the other player whether a rematch is still possible.</td>
+            </tr>
+            <tr>
+              <td data-label="Data">Adventure progress: the stars you have won on each level</td>
+              <td data-label="Required?">Yes, to play Adventure</td>
+              <td data-label="Why we use it">Keeping your Adventure on your account, so a new phone or a reinstall picks up where you left off.</td>
             </tr>
             <tr>
               <td data-label="Data">Live invites you send to friends and receive from them</td>
@@ -105,11 +110,6 @@
               <td data-label="Why we use it">The monthly leaderboard, and the awards shown on your profile.</td>
             </tr>
             <tr>
-              <td data-label="Data">A friend's code: whose code you entered, when, and when its free week was given</td>
-              <td data-label="Required?">No — only if you enter one</td>
-              <td data-label="Why we use it">Giving you the free week the code is for, once. The friend whose code it was sees how many people joined with it, not who.</td>
-            </tr>
-            <tr>
               <td data-label="Data">Friends, blocks and mutes</td>
               <td data-label="Required?">No</td>
               <td data-label="Why we use it">The social features you choose to use.</td>
@@ -120,14 +120,19 @@
               <td data-label="Why we use it">Reviewing cheating and abuse.</td>
             </tr>
             <tr>
-              <td data-label="Data">In-app notifications, the title you wear, when you were last active, and your settings</td>
+              <td data-label="Data">In-app notifications, the titles you have earned and the one you wear, your training streak, when you were last active, and your settings</td>
               <td data-label="Required?">Yes</td>
               <td data-label="Why we use it">Showing you what happened, showing friends you are around, and applying your choices.</td>
             </tr>
             <tr>
-              <td data-label="Data">Your subscription: which plan, when it started, renews or ends, and the store it was bought through</td>
-              <td data-label="Required?">Yes, to use the app</td>
-              <td data-label="Why we use it">outrepd needs a subscription. We record whether yours is active so the app and the server can let you play.</td>
+              <td data-label="Data">OUTREPD Pro, if you buy it: which plan, when it started, renews or ends, and the store it was bought through</td>
+              <td data-label="Required?">No</td>
+              <td data-label="Why we use it">Pro removes the ads. We record whether yours is active so the app knows not to show them.</td>
+            </tr>
+            <tr>
+              <td data-label="Data">For the ads, collected by Google AdMob, not by us: your phone's advertising identifier (on iPhone only if you allow it), IP address, device and app information, and how you interact with the ads</td>
+              <td data-label="Required?">Yes, unless you have Pro</td>
+              <td data-label="Why we use it">Showing an ad after a game, measuring it, and preventing ad fraud. See <a href="#ads">Ads</a>.</td>
             </tr>
             <tr>
               <td data-label="Data">A push notification address for your phone, and the app's language</td>
@@ -142,23 +147,31 @@
           </tbody>
         </table>
       </div>
-      <p>We do not collect your location, contacts, advertising identifiers, or payment details. You pay Google Play or the App Store, never us: your card details go to them and we never see them.</p>
+      <p>We do not collect your location, contacts or payment details. Our server never receives your advertising identifier; only Google's ad service does, as described under <a href="#ads">Ads</a>. You pay Google Play or the App Store, never us: your card details go to them and we never see them.</p>
       <p>The daily reminder is set on your phone and never reaches us.</p>
       <p>The home-screen widget gets your daily goal, streak and rank from the app on the same phone. If you turn on saving workouts to Apple Health or Health Connect in Settings, the app writes each set there as a workout (when it started and ended, and the number of push-ups), from your phone. outrepd reads nothing from Apple Health or Health Connect. What it writes there never reaches us, is never used for advertising and is never shared. You can turn it off in Settings, and remove what was written in the Health app or Health Connect.</p>
 
       <h2>How we use it</h2>
-      <p>Only to run outrepd: matches, rankings, friends, notifications, your profile, keeping the game fair, and answering you when you contact us. We do not use your data for advertising, we do not build profiles of you for anyone else, and we do not use analytics or tracking tools. Crash reports are used only to fix the app.</p>
+      <p>To run outrepd: matches, rankings, Adventure, friends, notifications, your profile, keeping the game fair, and answering you when you contact us. And to show ads to accounts without Pro, as described under <a href="#ads">Ads</a>. Apart from those ads, we do not use your data for advertising, we do not build profiles of you for anyone else, and we do not use analytics tools. Crash reports are used only to fix the app.</p>
+
+      <h2 id="ads">Ads</h2>
+      <p>outrepd is free to use and shows an ad when you leave the result of a game. There are no ads in your first three games, and none at all with OUTREPD Pro. The ads come from Google AdMob and are limited to content rated for teens.</p>
+      <p>To choose, show and measure ads and to prevent ad fraud, Google receives information from your phone: your IP address, device and app information, how you interact with the ad, and your phone's advertising identifier where it is available. Google's policies cover what it does with it: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">policies.google.com/technologies/partner-sites</a>.</p>
+      <p><strong>On iPhone,</strong> the app asks before your advertising identifier can be used to track you (Apple's App Tracking Transparency). If you say no, it is not shared, and the ads are not personalised with it. You can change your answer in Settings → Privacy &amp; Security → Tracking.</p>
+      <p><strong>On Android,</strong> you can reset or delete your advertising ID in your phone's settings (Settings → Google → Ads, or Settings → Privacy → Ads).</p>
+      <p><strong>In the European Economic Area, the UK and Switzerland,</strong> Google's consent form asks you before the first ad, and you can refuse personalised ads there.</p>
 
       <h2>What other people can see</h2>
       <p>Other players can see your username, photo, rank, record, best set, streak, the title you wear, your leaderboard places and your month awards. You can hide yourself from the leaderboards, and hide your country, in Settings → Privacy. Anyone with your share link can see your share card without signing in. Your email address is never shown to anyone.</p>
 
       <h2>Sharing</h2>
-      <p>We do not sell your data or share it for advertising. We use four service providers who process data only on our behalf, to run the service:</p>
+      <p>We do not sell your data. Apart from the ads described under <a href="#ads">Ads</a>, we do not share it for advertising. We use these service providers:</p>
       <ul>
-        <li><strong>Supabase</strong> hosts the app's server, database and profile photos, sends the sign-in codes you receive by email, and relays the rep counts between the two phones in a live match.</li>
+        <li><strong>Supabase</strong> hosts the app's server, database and profile photos, and relays the rep counts between the two phones in a live match.</li>
         <li><strong>Resend</strong> sends the email with your data when you ask for a copy.</li>
-        <li><strong>RevenueCat</strong> manages subscriptions. It receives your account ID and your purchase records from Google Play or the App Store, and tells the app and our server whether your subscription is active. Its privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">revenuecat.com/privacy</a>.</li>
+        <li><strong>RevenueCat</strong> manages the OUTREPD Pro subscription. It receives your account ID and your purchase records from Google Play or the App Store, and tells the app and our server whether your subscription is active. Its privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">revenuecat.com/privacy</a>.</li>
         <li><strong>Google Firebase</strong> delivers push notifications to your phone (Firebase Cloud Messaging — on iPhone, through Apple's push notification service) and collects crash reports (Firebase Crashlytics). Its privacy information: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">firebase.google.com/support/privacy</a>.</li>
+        <li><strong>Google AdMob</strong> shows the ads to accounts without Pro, as described under <a href="#ads">Ads</a>. Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</li>
       </ul>
       <p>We may disclose data if the law requires it, or to protect players from fraud or abuse. Your data may be processed in countries other than yours.</p>
 
@@ -171,20 +184,20 @@
       <h2>Your choices and rights</h2>
       <p><strong>Get a copy of your data:</strong> Settings → Data → Export my data. It is emailed to you.</p>
       <p><strong>Change what others see:</strong> Settings → Privacy.</p>
-      <p><strong>Correct your data:</strong> change your username once from your profile, and your photo and settings at any time. For anything else, email us.</p>
+      <p><strong>Correct your data:</strong> change your username from your profile once every 14 days, and your photo and settings at any time. For anything else, email us.</p>
       <p><strong>Delete your data:</strong> <a href="#deleting-your-account">delete your account, below</a>.</p>
-      <p>Depending on where you live (for example under the GDPR in Europe or the CCPA in California), you may have further rights, such as to object to or restrict processing, or to complain to a data protection authority. Email <a href="mailto:support@outrepd.com">support@outrepd.com</a> and we will answer within 30 days. We process your data to provide the service you asked for. We do not sell or share personal information as those laws define it.</p>
+      <p>Depending on where you live (for example under the GDPR in Europe or the CCPA in California), you may have further rights, such as to object to or restrict processing, or to complain to a data protection authority. Email <a href="mailto:support@outrepd.com">support@outrepd.com</a> and we will answer within 30 days. We process your data to provide the service you asked for, and the ads on the basis described under <a href="#ads">Ads</a>. We do not sell personal information. Some US state laws count personalised ads as "sharing" personal information; you can stop it with your phone's ad and tracking settings described under <a href="#ads">Ads</a>, or with Pro, which removes the ads.</p>
 
       <h2 id="deleting-your-account">Deleting your account</h2>
       <p><strong>In the app:</strong> open outrepd, go to Settings → Data → Delete account, and confirm.</p>
       <p><strong>Without the app:</strong> email <a href="mailto:support@outrepd.com">support@outrepd.com</a> from the email address on your account, or tell us your username, with the subject "Delete my outrepd account". We will delete it within 30 days and confirm by email.</p>
-      <p><strong>What is deleted:</strong> your account, email address, username, profile photo, sets, matches, live matches and invites, month awards, friend codes you entered, friends, blocks, mutes, reports you filed, notifications, push notification addresses and settings.</p>
+      <p><strong>What is deleted:</strong> your account, email address, username, profile photo, sets, matches, live matches and invites, Adventure progress, titles and streak, month awards, friends, blocks, mutes, reports you filed, notifications, push notification addresses and settings.</p>
       <p><strong>What is kept:</strong> opponents keep the rank points they won or lost against you, because those are part of their own records, but the match is removed from their history. Reports other players filed about you are kept with your account removed from them.</p>
       <p><strong>Subscriptions:</strong> deleting your account does not cancel a subscription, because Google Play or the App Store bills it, not us. Cancel it in Google Play → Payments &amp; subscriptions, or on iPhone in Settings → your name → Subscriptions.</p>
       <p><strong>Deletion cannot be undone.</strong></p>
 
       <h2>Children</h2>
-      <p>outrepd is only for people aged 16 and over, and the app turns away anyone who says they are younger. We do not knowingly collect data from children. If you believe a child has an account, email us and we will delete it.</p>
+      <p>outrepd is only for people aged 13 and over, and the app turns away anyone who says they are younger. We do not knowingly collect data from children under 13. If you believe a child under 13 has an account, email us and we will delete it.</p>
 
       <h2>Changes to this policy</h2>
       <p>If we change this policy, we will post the new version here and update the date at the top.</p>
