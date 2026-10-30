@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>OUTREPD — Live 1v1 push-up duels, judged by your camera</title>
-  <meta name="description" content="Race real people at push-ups for 60 seconds, fight through 140 Adventure levels and climb from Iron to Master. Your phone's camera counts every full rep, and nothing it sees leaves your phone.">
+  <title>OUTREPD: Push-Up Counter &amp; Live 1v1 Push-Up Challenge App</title>
+  <meta name="description" content="A free push-up challenge app: race real people live for 60 seconds while your phone's camera counts every full rep. 140 Adventure fights and ranks from Iron to Master.">
   <meta name="theme-color" content="#121110">
   <link rel="canonical" href="https://www.outrepd.com/">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/favicon.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.outrepd.com/">
-  <meta property="og:title" content="OUTREPD — Live 1v1 push-up duels">
+  <meta property="og:title" content="OUTREPD: Live 1v1 Push-Up Challenge App">
   <meta property="og:description" content="Race real people at push-ups for 60 seconds. Your phone's camera counts every full rep, and the winner takes the rank points.">
+  <meta property="og:site_name" content="OUTREPD">
+  <meta name="twitter:title" content="OUTREPD: Live 1v1 Push-Up Challenge App">
+  <meta name="twitter:description" content="Race real people at push-ups for 60 seconds. Your phone's camera counts every full rep.">
   <meta property="og:image" content="https://www.outrepd.com/assets/home/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,13 +23,13 @@
   <meta name="twitter:image" content="https://www.outrepd.com/assets/home/og.jpg">
   <meta name="apple-itunes-app" content="app-id=6817853725">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"MobileApplication","name":"OUTREPD","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Live 1v1 push-up duels judged by your phone's camera, a 140-level Adventure and a ranked ladder from Iron to Master.","url":"https://www.outrepd.com/","sameAs":["https://apps.apple.com/app/id6817853725","https://play.google.com/store/apps/details?id=com.outrepd.outrepd"]}
+  [{"@context":"https://schema.org","@type":"MobileApplication","name":"OUTREPD","alternateName":"OUTREPD: Push-Up Battles","operatingSystem":"iOS, Android","applicationCategory":"HealthApplication","applicationSubCategory":"Fitness game","inLanguage":["en","es","de","fr","it","pt","ru","tr","hi","id","ja","ko","zh"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Live 1v1 push-up challenges counted by your phone's camera, a 140-level Adventure and a ranked ladder from Iron to Master.","image":"https://www.outrepd.com/assets/home/og.jpg","url":"https://www.outrepd.com/","installUrl":"https://apps.apple.com/app/id6817853725","publisher":{"@type":"Organization","name":"MK Labs"},"sameAs":["https://apps.apple.com/app/id6817853725","https://play.google.com/store/apps/details?id=com.outrepd.outrepd"]},{"@context":"https://schema.org","@type":"Organization","name":"OUTREPD","legalName":"MK Labs","url":"https://www.outrepd.com/","logo":"https://www.outrepd.com/assets/logo-icon.png","email":"support@outrepd.com"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need any equipment?","acceptedAnswer":{"@type":"Answer","text":"Just your phone and some floor. Lean the phone against something low, facing you, so the camera can see your head, shoulders and hands."}},{"@type":"Question","name":"Does any video leave my phone?","acceptedAnswer":{"@type":"Answer","text":"No. Reps are counted on your phone, and the camera picture is never sent anywhere. In a live match the only thing your phone sends the other player is your rep count."}},{"@type":"Question","name":"What if nobody is online?","acceptedAnswer":{"@type":"Answer","text":"If nobody is found live within 15 seconds, you race a set another lifter recorded earlier, rep for rep. There is always someone to beat."}},{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. OUTREPD is free, with an ad when you leave the result of a game. OUTREPD Pro, weekly or yearly, removes the ads; it is billed by the App Store or Google Play, and you can cancel any time in your store account."}},{"@type":"Question","name":"Can I play with friends?","acceptedAnswer":{"@type":"Answer","text":"Yes. Invite a friend to a live match and they have a minute to join. Friend matches don't move your rank."}},{"@type":"Question","name":"Who can play?","acceptedAnswer":{"@type":"Answer","text":"Anyone 13 or over, on iPhone or Android. Sign in with Apple or Google."}}]}]
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="/assets/home/lifter.webp">
-  <link rel="stylesheet" href="/home.css?v=5">
+  <link rel="stylesheet" href="/home.css?v=6">
 </head>
 <body>
   <header class="nav" id="nav">
@@ -39,7 +42,7 @@
 
   <main>
     <section class="hero">
-      <div class="hero__photo"><img src="/assets/home/lifter.webp" alt="A lifter mid push-up, facing the phone on the floor" fetchpriority="high"></div>
+      <div class="hero__photo"><img width="1086" height="1448" src="/assets/home/lifter.webp" alt="A lifter mid push-up, facing the phone on the floor" fetchpriority="high"></div>
       <div class="chips" aria-hidden="true">
         <div class="chip"><span class="crest" data-badge="3" data-size="44"></span><div><b>+7 LP</b><small>Gold III</small></div></div>
         <div class="chip"><span class="dot">Lv</span><div><b>12</b><small>Your level</small></div></div>
@@ -47,8 +50,8 @@
       </div>
       <div class="wrap">
         <div class="hero__copy">
-          <span class="kicker">Live 1v1 push-up duels</span>
-          <h1 class="display">Outrep anyone.<span>Live.</span></h1>
+          <h1 class="kicker">Live 1v1 push-up challenge app</h1>
+          <p class="display hero__title">Outrep anyone.<span>Live.</span></p>
           <p class="lead">Phone on the floor, a real rival on the other side, sixty seconds on the clock. Your camera counts every full rep, and the higher count takes the rank points.</p>
           <div class="stores">
             <a class="badge" href="https://apps.apple.com/app/id6817853725"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store"></a>
@@ -102,7 +105,7 @@
                 <li>Your first match places you at Iron V.</li>
               </ul>
             </div>
-            <div class="phone phone--inset phone--photo"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/live.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/live.webp" alt="A live match: both lifters, their ranks and counts, and the clock" loading="lazy"></div></div></div>
+            <div class="phone phone--inset phone--photo"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/live.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/live.webp" alt="A live match: both lifters, their ranks and counts, and the clock" loading="lazy"></div></div></div>
           </div>
 
           <div class="tile tile--ref">
@@ -120,14 +123,14 @@
             <span class="tag">Friends</span>
             <h3>Race your friends live.</h3>
             <p>Add friends by username and invite one to a live match. They get a minute to join, wherever they are. Friend matches are friendly: no rank on the line, just the head-to-head record.</p>
-            <div class="phone"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/friends.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/friends.webp" alt="The friends list, with who is online and an invite button beside each" loading="lazy"></div></div></div>
+            <div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/friends.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/friends.webp" alt="The friends list, with who is online and an invite button beside each" loading="lazy"></div></div></div>
           </div>
 
           <div class="tile tile--half tile--shot">
             <span class="tag">Boards</span>
             <h3>Top your country.</h3>
             <p>Weekly and monthly boards for your country and for the whole world. See where you stand, and who is just above you.</p>
-            <div class="phone"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/ranks.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/ranks.webp" alt="The weekly board for a country" loading="lazy"></div></div></div>
+            <div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/ranks.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/ranks.webp" alt="The weekly board for a country" loading="lazy"></div></div></div>
           </div>
 
           <div class="tile tile--third">
@@ -159,9 +162,9 @@
           <p class="lead">140 fights across seven worlds. Every rep hits the monster, faster fights earn more stars, and stars unlock weapons that hit harder. Play it any time, with no rank on the line.</p>
         </div>
         <div class="stage">
-          <figure><div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/adv-map.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/adv-map.webp" alt="The Adventure map: levels on a path, stars under each one cleared" loading="lazy"></div></div></div><figcaption>The map</figcaption></figure>
-          <figure><div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/adv-fight.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/adv-fight.webp" alt="An Adventure fight: the monster's health dropping with each push-up" loading="lazy"></div></div></div><figcaption>A fight</figcaption></figure>
-          <figure><div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/adv-armory.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/adv-armory.webp" alt="The armory: eight weapons, each unlocked by stars" loading="lazy"></div></div></div><figcaption>The armory</figcaption></figure>
+          <figure><div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/adv-map.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/adv-map.webp" alt="The Adventure map: levels on a path, stars under each one cleared" loading="lazy"></div></div></div><figcaption>The map</figcaption></figure>
+          <figure><div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/adv-fight.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/adv-fight.webp" alt="An Adventure fight: the monster's health dropping with each push-up" loading="lazy"></div></div></div><figcaption>A fight</figcaption></figure>
+          <figure><div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/adv-armory.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/adv-armory.webp" alt="The armory: eight weapons, each unlocked by stars" loading="lazy"></div></div></div><figcaption>The armory</figcaption></figure>
         </div>
         <div class="worlds">
           <div class="world"><small>World 1</small><b>Iron Mines</b></div>
@@ -212,10 +215,10 @@
           <h2 class="display">See it before you play it.</h2>
         </div>
         <div class="gallery">
-          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/won.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/won.webp" alt="The result after a win" loading="lazy"></div></div></div><figcaption>A win</figcaption></figure>
-          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/home.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/home.webp" alt="The home screen: today's goal, the streak and the weekly race" loading="lazy"></div></div></div><figcaption>Your day</figcaption></figure>
-          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/profile.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/profile.webp" alt="A profile: level, best set, record and place" loading="lazy"></div></div></div><figcaption>Your profile</figcaption></figure>
-          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img src="/assets/home/awards.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img src="/assets/home/awards.webp" alt="Titles earned and the ones still to win" loading="lazy"></div></div></div><figcaption>Titles</figcaption></figure>
+          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/won.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/won.webp" alt="The result after a win" loading="lazy"></div></div></div><figcaption>A win</figcaption></figure>
+          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/home.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/home.webp" alt="The home screen: today's goal, the streak and the weekly race" loading="lazy"></div></div></div><figcaption>Your day</figcaption></figure>
+          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/profile.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/profile.webp" alt="A profile: level, best set, record and place" loading="lazy"></div></div></div><figcaption>Your profile</figcaption></figure>
+          <figure><div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/awards.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/awards.webp" alt="Titles earned and the ones still to win" loading="lazy"></div></div></div><figcaption>Titles</figcaption></figure>
         </div>
       </div>
     </section>
