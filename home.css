@@ -121,10 +121,16 @@ h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-tra
 .step .time { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 13px; letter-spacing: .14em; color: var(--rival); margin-bottom: 26px; display: block; }
 @media (max-width: 900px) { .steps { grid-template-columns: 1fr; } }
 
-/* Phones */
-.phone { position: relative; aspect-ratio: 660 / 1434; border-radius: 42px; padding: 8px; background: linear-gradient(145deg, #3B3732, #121110 40%, #2A2622); box-shadow: 0 0 0 1px #4A453E, 0 40px 90px rgba(0, 0, 0, .55); }
-.phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 34px; background: #000; }
-.phone--glow { box-shadow: 0 0 0 1px #4A453E, 0 40px 90px rgba(0, 0, 0, .55), 0 0 90px rgba(232, 220, 200, .14); }
+/* Phones: a slim black body floating over a glow from its own screen
+   (the user's pick B, 2026-10-30), so each shot is lit in its own colours. */
+.phone { position: relative; aspect-ratio: 660 / 1434; }
+.phone__glow { position: absolute; inset: 4% 2%; border-radius: 16% / 7.5%; overflow: hidden; filter: blur(34px) saturate(170%); opacity: .75; transform: scale(1.04); pointer-events: none; }
+.phone__glow img { width: 100%; height: 100%; object-fit: cover; }
+.phone__body { position: relative; height: 100%; border-radius: 15.5% / 7.2%; padding: 2.6%; background: #0B0A09;
+  box-shadow: inset 0 0 0 1.5px #3E3A35, inset 0 1px 0 2px rgba(255, 255, 255, .08), 0 30px 60px -20px rgba(0, 0, 0, .9); }
+.phone__screen { position: relative; height: 100%; border-radius: 13.4% / 6.2%; overflow: hidden; background: #000; }
+.phone__screen > img { width: 100%; height: 100%; object-fit: cover; }
+.phone__island { position: absolute; z-index: 1; top: 2.2%; left: 50%; width: 30%; height: 3.3%; transform: translateX(-50%); background: #000; border-radius: 99px; }
 
 /* Bento */
 .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
@@ -176,7 +182,7 @@ h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-tra
 .stage { display: grid; grid-template-columns: 1fr 1.18fr 1fr; gap: clamp(16px, 3vw, 40px); align-items: end; max-width: 1020px; margin: 0 auto; }
 .stage figure:nth-child(1) { transform: rotate(-5deg) translateY(24px); }
 .stage figure:nth-child(3) { transform: rotate(5deg) translateY(24px); }
-.stage figure:nth-child(2) .phone { box-shadow: 0 0 0 1px #4A453E, 0 40px 90px rgba(0, 0, 0, .55), 0 0 110px rgba(224, 177, 69, .22); }
+.stage figure:nth-child(2) .phone__glow { opacity: .95; }
 .stage figcaption { text-align: center; color: var(--muted); font-size: 14px; margin-top: 16px; }
 .worlds { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: clamp(60px, 7vw, 90px); }
 .world { padding: 18px 14px; border-radius: 18px; background: rgba(28, 26, 24, .8); border: 1px solid var(--line); }
