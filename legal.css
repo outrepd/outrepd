@@ -1,0 +1,56 @@
+/* Privacy, terms, contact and 404, in the home page's look (home.css holds the
+   tokens, the nav, the buttons and the footer). A reading column beside an
+   "On this page" list built from the page's own headings. */
+
+.legal { padding-top: calc(env(safe-area-inset-top, 0px) + 132px); padding-bottom: clamp(70px, 9vw, 120px); position: relative; isolation: isolate; }
+.legal::before { content: ""; position: absolute; z-index: -1; left: -10%; top: 0; width: 70%; height: 520px; background: radial-gradient(closest-side, rgba(232, 132, 107, .12), transparent); }
+
+.legal__header { display: grid; gap: 18px; margin-bottom: clamp(40px, 5vw, 64px); }
+.legal__title { font-family: var(--display); font-stretch: 125%; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: .9; font-size: clamp(44px, 7vw, 96px); text-wrap: balance; }
+.legal__date { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--rival); order: -1; }
+.legal__date::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+
+.legal__layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.legal__layout--plain { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 100px); display: grid; gap: 4px; padding: 20px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); max-height: calc(100vh - 140px); overflow: auto; }
+.toc b { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.toc a { font-size: 14px; line-height: 1.35; color: var(--soft); padding: 6px 10px; border-radius: 10px; transition: background .15s, color .15s; }
+.toc a:hover { background: var(--raised); color: var(--text); }
+.toc a.is-here { background: var(--raised); color: var(--text); box-shadow: inset 2px 0 0 var(--rival); border-radius: 0 10px 10px 0; }
+
+.legal__body { min-width: 0; max-width: 46em; color: var(--soft); font-size: 17px; line-height: 1.75; }
+.legal__body > * + * { margin-top: 18px; }
+.legal__body h2 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-transform: uppercase; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.1; letter-spacing: -0.005em; color: var(--text); margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); scroll-margin-top: 100px; }
+.legal__body h2:first-child { margin-top: 0; }
+.legal__body h3 { font-size: 18px; color: var(--text); margin-top: 28px; }
+.legal__body strong { color: var(--text); font-weight: 700; }
+.legal__body a { color: var(--cream); text-decoration: underline; text-decoration-color: rgba(232, 220, 200, .35); text-underline-offset: 3px; }
+.legal__body a:hover { text-decoration-color: var(--cream); }
+.legal__body ul, .legal__body ol { padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.legal__body li { position: relative; padding-left: 26px; }
+.legal__body li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 8px; height: 8px; border-radius: 50%; background: var(--rival); }
+
+.legal__table-container { overflow-x: auto; border-radius: 20px; border: 1px solid var(--line); background: var(--card); }
+.legal__table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.55; min-width: 560px; }
+.legal__table th { text-align: left; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 800; padding: 16px 18px; background: var(--raised); }
+.legal__table td { padding: 14px 18px; border-top: 1px solid var(--line); vertical-align: top; }
+.legal__table td:first-child { color: var(--text); font-weight: 700; }
+
+/* Contact: the address as the page's one big thing */
+.mailcard { display: grid; gap: 10px; padding: 28px; border-radius: 24px; background: radial-gradient(120% 120% at 100% 0%, #2B2520 0%, var(--card) 60%); border: 1px solid var(--line); }
+.mailcard small { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+.legal__body .mailcard a { font-family: var(--display); font-stretch: 112%; font-weight: 800; font-size: clamp(22px, 3.4vw, 34px); color: var(--text); text-decoration: none; word-break: break-word; }
+.mailcard span { color: var(--muted); font-size: 15px; }
+
+/* 404 */
+.notfound { min-height: 70svh; display: grid; place-content: center; justify-items: center; gap: 18px; text-align: center; padding-block: 140px 80px; }
+.notfound__code { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: clamp(110px, 22vw, 240px); line-height: .85; color: var(--rival); }
+.notfound__title { font-family: var(--display); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: clamp(32px, 5vw, 56px); line-height: .95; }
+.notfound__body { color: var(--soft); font-size: 18px; }
+
+@media (max-width: 900px) {
+  .legal__layout { grid-template-columns: minmax(0, 1fr); }
+  .toc { display: none; }
+}
+
+.toc[hidden] { display: none; }
