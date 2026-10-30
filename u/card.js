@@ -90,17 +90,24 @@
     var tier = TIERS[Math.min(Math.max(card.tier_idx || 0, 0), 6)];
     var division = DIVISIONS[Math.min(Math.max(card.div_idx || 0, 0), 4)];
 
+    // The card and the light behind the whole page both take the tier's colour.
     document
       .getElementById('rank-card')
+      .style.setProperty('--tier-color', tier.color);
+    document
+      .querySelector('.card-page')
       .style.setProperty('--tier-color', tier.color);
 
     // The tier's badge, and their picture in the tier's frame: the same two
     // the app draws (crest.js), so the card here matches the one that sent
     // the reader to it.
     var tierIdx = Math.min(Math.max(card.tier_idx || 0, 0), 6);
+    // The crest twice: a blurred copy behind it is the glow, so the light
+    // follows the crest's own outline rather than a circle.
+    var crest = window.OutrepdCrest.badge(tierIdx, 240);
     document.getElementById('rank-crest').innerHTML =
-      window.OutrepdCrest.badge(tierIdx, 170);
-    var picture = 48;
+      '<span class="glow" aria-hidden="true">' + crest + '</span>' + crest;
+    var picture = 60;
     var box = window.OutrepdCrest.frameBox(picture);
     var avatar = document.getElementById('rank-avatar');
     avatar.style.width = box.width + 'px';
