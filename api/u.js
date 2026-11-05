@@ -20,8 +20,17 @@ const { describe, fetchCard } = require('./_card');
 const SITE = 'https://www.outrepd.com';
 
 let page = null;
-function staticPage() {
-  if (!page) page = fs.readFileSync(path.join(process.cwd(), 'u', 'index.html'), 'utf8');
+// The page from the function's own copy, or else from the site itself: a
+// missing file must never take a profile page down.
+async function staticPage(req) {
+  if (page) return page;
+  try {
+    page = fs.readFileSync(path.join(process.cwd(), 'u', 'index.html'), 'utf8');
+  } catch (_) {
+    const res = await fetch('https://' + (req.headers.host || 'www.outrepd.com') + '/u/index.html');
+    if (!res.ok) throw new Error('u/index.html: ' + res.status);
+    page = await res.text();
+  }
   return page;
 }
 
@@ -56,7 +65,17 @@ function withMeta(html, d) {
 
 module.exports = async function handler(req, res) {
   const username = String((req.query && req.query.username) || '').trim();
-  let html = staticPage();
+  let html;
+  try {
+    html = await staticPage(req);
+  } catch (error) {
+    // No page to send: the plain one, which reads the name from ?name=.
+    console.error('u page', error);
+    res.statusCode = 302;
+    res.setHeader('Location', '/u/index.html?name=' + encodeURIComponent(username));
+    res.end();
+    return;
+  }
   try {
     const card = username ? await fetchCard(username) : null;
     if (card) html = withMeta(html, describe(card));
