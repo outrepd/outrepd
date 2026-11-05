@@ -128,8 +128,11 @@
     }
     avatar.appendChild(face);
     document.getElementById('rank-username').textContent = username;
+    // The rating, as the app shows it since 2026-11-02 (ratingOf() in the
+    // app's lib/ranking.dart): 1,000 at the bottom, 100 a division.
+    var rating = 1000 + (tierIdx * DIVISIONS.length + Math.min(Math.max(card.div_idx || 0, 0), 4)) * 100 + (card.lp || 0);
     document.getElementById('rank-tier').textContent =
-      tier.name + ' ' + division + ' · ' + (card.lp || 0) + ' / 100 LP';
+      tier.name + ' ' + division + ' · ' + rating.toLocaleString('en-US') + ' rating';
 
     var places = [];
     if (card.global_place) places.push('Global #' + card.global_place);

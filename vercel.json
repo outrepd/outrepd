@@ -1,15 +1,38 @@
 {
   "rewrites": [
-    { "source": "/u/:username", "destination": "/u/index.html" }
+    {
+      "source": "/u/:username",
+      "destination": "/api/u?username=:username"
+    }
   ],
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
-      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
     },
     {
       "source": "/.well-known/assetlinks.json",
-      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
     }
-  ]
+  ],
+  "functions": {
+    "api/u.js": {
+      "includeFiles": "u/index.html"
+    },
+    "api/og.js": {
+      "includeFiles": "u/crest.js",
+      "memory": 1024,
+      "maxDuration": 15
+    }
+  }
 }

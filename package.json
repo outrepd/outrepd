@@ -1,0 +1,11 @@
+{
+  "name": "outrepd-site",
+  "private": true,
+  "description": "outrepd.com: the static site, and two functions for shared profile links (api/u.js, api/og.js).",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}
