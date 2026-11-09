@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="/assets/home/lifter.webp">
-  <link rel="stylesheet" href="/home.css?v=8">
+  <link rel="stylesheet" href="/home.css?v=9">
   <script>if (window.matchMedia && !matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("motion");</script>
 </head>
 <body>
@@ -70,6 +70,7 @@
           <span class="float__link">outrepd.com/c/k7f2</span>
         </div>
         <div class="float float--level"><span class="dot">Lv</span><div><b>12</b><small>+38 XP</small></div></div>
+        <button type="button" class="tilt-hint" id="tiltHint" hidden>Tap, then tilt your phone</button>
       </div>
       </div>
     </section>
@@ -329,6 +330,38 @@
       tilt.style.transform = 'translate(-50%, -50%) rotateY(' + (-18 + x * 10) + 'deg) rotateX(' + (6 - y * 8) + 'deg) rotate(2deg)';
     });
     hero.addEventListener('pointerleave', function () { tilt.style.transform = ''; });
+  })();
+  (function () {
+    // A phone or a tablet has no pointer to follow: the phone sways by
+    // itself (CSS), and turns with the device when it can tell its tilt,
+    // measured from however it was held at first. An iPhone asks first, so
+    // there it waits for a tap on the hint.
+    var tilt = document.getElementById('tilt'), hint = document.getElementById('tiltHint');
+    if (!tilt) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var DOE = window.DeviceOrientationEvent;
+    if (!DOE) return;
+    var b0 = null, g0 = null;
+    function turn(e) {
+      if (e.beta == null || e.gamma == null) return;
+      if (b0 === null) { b0 = e.beta; g0 = e.gamma; }
+      var g = Math.max(-25, Math.min(25, e.gamma - g0)) / 25;
+      var b = Math.max(-25, Math.min(25, e.beta - b0)) / 25;
+      tilt.classList.add('gyro');
+      tilt.style.transform = 'translate(-50%, -50%) rotateY(' + (-18 + g * 16) + 'deg) rotateX(' + (6 - b * 10) + 'deg) rotate(2deg)';
+    }
+    function listen() { window.addEventListener('deviceorientation', turn); }
+    if (typeof DOE.requestPermission === 'function') {
+      if (!hint) return;
+      hint.hidden = false;
+      hint.addEventListener('click', function () {
+        hint.hidden = true;
+        DOE.requestPermission().then(function (r) { if (r === 'granted') listen(); }).catch(function () {});
+      });
+    } else {
+      listen();
+    }
   })();
   (function () {
     // The referee's count: one more each time the bar fills back up.
