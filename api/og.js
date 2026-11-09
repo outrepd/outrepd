@@ -169,7 +169,7 @@ module.exports = async function handler(req, res) {
     if (!card) {
       // Nobody by that name: the site's own picture.
       res.statusCode = 302;
-      res.setHeader('Location', '/assets/home/og.jpg');
+      res.setHeader('Location', '/assets/home/og-2.jpg');
       res.end();
       return;
     }
@@ -182,7 +182,7 @@ module.exports = async function handler(req, res) {
   } catch (error) {
     console.error('og', username, error);
     res.statusCode = 302;
-    res.setHeader('Location', '/assets/home/og.jpg');
+    res.setHeader('Location', '/assets/home/og-2.jpg');
     res.end();
   }
 };
