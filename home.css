@@ -374,3 +374,33 @@ h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-tra
 .footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
 .footer nav { display: flex; flex-wrap: wrap; gap: 24px; }
 .footer a:hover { color: var(--text); }
+
+/* The red dots before the headings breathe like a live light (the user,
+   2026-11-09), still for anybody who asked for less motion. */
+.kicker::before { animation: livePulse 1.8s ease-in-out infinite; }
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 4px currentColor, 0 0 14px currentColor; }
+  50% { opacity: .25; transform: scale(.75); box-shadow: 0 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .kicker::before { animation: none; } }
+
+/* Phones (the user, 2026-11-09: "the phone does not feel as finished as
+   the web"): tighter tiles and headings, the hero's cards over the camera
+   rather than the live count, and the gallery a swipe with the next one
+   peeking in. */
+@media (max-width: 600px) {
+  .trust { font-size: 14px; text-wrap: balance; }
+  .section__head { gap: 16px; margin-bottom: 32px; }
+  .tile { padding: 24px 22px; }
+  .tile--shot .phone { width: 70%; margin: 16px auto -110px; }
+  .herostage { height: 540px; }
+  .herostage__tilt { width: 220px; }
+  .float--rating { left: 0; top: 196px; }
+  .float--plan { right: 0; bottom: 30px; }
+  .gallery { grid-auto-columns: 72%; gap: 16px; margin-inline: -20px; padding-inline: 20px; scroll-padding-inline: 20px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18px, #000 calc(100% - 28px), transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 18px, #000 calc(100% - 28px), transparent 100%); }
+  .faq summary { font-size: 16.5px; }
+  .faq details { padding: 2px 20px; }
+  .faq-wrap { gap: 0; }
+}
