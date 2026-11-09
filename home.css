@@ -99,8 +99,8 @@ h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-tra
 .float .crest { width: 44px; height: 44px; display: grid; place-items: center; }
 .float .crest svg { width: 44px; height: auto; }
 .float .dot { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--raised); font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 13px; color: var(--gold); }
-.float--rating { left: 4px; top: 62px; --r: -4deg; animation-delay: -1s; }
-.float--plan { right: -6px; top: 150px; --r: 4deg; animation-delay: -3.5s; flex-direction: column; align-items: stretch; gap: 6px; width: 220px; }
+.float--rating { left: -4px; top: 28px; --r: -4deg; animation-delay: -1s; }
+.float--plan { right: -10px; top: 250px; --r: 4deg; animation-delay: -3.5s; flex-direction: column; align-items: stretch; gap: 6px; width: 220px; }
 .float--plan b { font-family: var(--body); font-stretch: 100%; font-size: 14px; font-weight: 800; }
 .float__row { display: flex; justify-content: space-between; align-items: baseline; }
 .float__row .ok { color: var(--green); font-size: 13px; font-weight: 700; }
@@ -111,12 +111,29 @@ h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-tra
 .float--level { right: 8px; bottom: 120px; --r: 3deg; animation-delay: -2s; }
 @keyframes drift { 0%, 100% { transform: translateY(0) rotate(var(--r)); } 50% { transform: translateY(-10px) rotate(var(--r)); } }
 @media (prefers-reduced-motion: reduce) { .float { animation: none; } .herostage__tilt { transition: none; } }
-@media (max-width: 1080px) { .hero__grid { grid-template-columns: minmax(0, 1fr) 440px; } .herostage__tilt { width: 250px; } .float--challenge { left: 20px; } }
+/* A small laptop: a smaller phone, the cards kept out past its edges. */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr) 400px; gap: 24px; }
+  .herostage { height: 580px; }
+  .herostage__tilt { width: 220px; }
+  .float { padding: 10px 13px; border-radius: 16px; }
+  .float b { font-size: 20px; }
+  .float .crest, .float .dot { width: 36px; height: 36px; }
+  .float .crest svg { width: 36px; }
+  .float--rating { left: -18px; top: 18px; }
+  .float--plan { right: -6px; top: 220px; width: 176px; }
+  .float--plan svg { width: 150px; height: auto; }
+  .float--plan b { font-size: 13px; }
+  .float--challenge { left: -18px; bottom: 56px; width: 190px; }
+  .float__big { font-size: 22px !important; }
+  .float__link { font-size: 11px; }
+  .float--level { right: -4px; bottom: 96px; }
+}
 @media (max-width: 900px) {
   .hero.hero--stage { padding-block: 96px 40px; }
   .hero.hero--stage .wrap { margin-top: 0; }
   .hero__grid { grid-template-columns: 1fr; gap: 8px; }
-  .herostage { height: 560px; margin-inline: -8px; }
+  .herostage { height: 560px; width: 100%; max-width: 460px; margin-inline: auto; }
   .herostage__tilt { width: 230px; }
   .float { padding: 9px 12px; border-radius: 14px; }
   .float b { font-size: 19px; }
