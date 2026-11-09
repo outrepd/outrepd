@@ -29,7 +29,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="/assets/home/lifter.webp">
-  <link rel="stylesheet" href="/home.css?v=6">
+  <link rel="stylesheet" href="/home.css?v=7">
+  <script>if (window.matchMedia && !matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("motion");</script>
 </head>
 <body>
   <header class="nav" id="nav">
@@ -122,12 +123,15 @@
           <div class="tile tile--ref">
             <span class="tag">The referee</span>
             <h3>Only full reps.</h3>
-            <p>The bar beside you is the referee. A rep scores when you go down past the gold line and back up past the top one.</p>
-            <div class="bar" aria-hidden="true">
-              <div class="bar__track"><div class="bar__fill"></div><span class="bar__line bar__line--top"></span><span class="bar__line bar__line--low"></span></div>
-              <div class="bar__labels"><span><b>Top line</b>back up past it</span><span><b>Gold line</b>down past it</span></div>
+            <p>The bar beside you is the referee. It empties as you go down, turns green at the bottom, and fills back up as you push. Full again, and the rep counts.</p>
+            <div class="ref" aria-hidden="true">
+              <div class="ref__bar"><div class="ref__fill"></div></div>
+              <div class="ref__side">
+                <span class="ref__count" id="refCount">0</span>
+                <span class="ref__cue"><span class="ref__down">Go down</span><span class="ref__up">Go up</span></span>
+              </div>
             </div>
-            <p>The number you watch climb is the number that's scored. No recount at the end.</p>
+            <p>If your shape breaks, the bar turns orange and that rep doesn't count. The number you watch climb is the number that's scored.</p>
           </div>
 
           <div class="tile tile--half tile--shot">
@@ -169,7 +173,7 @@
                 <li>Friendly: no rank on the line.</li>
               </ul>
             </div>
-            <div class="phone phone--inset"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/plan.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/plan.webp" alt="A six-week plan: the road from the starting best to the goal, this week's sets, and the race against last week's you" loading="lazy"></div></div></div>
+            <div class="phone"><div class="phone__glow" aria-hidden="true"><img width="660" height="1434" src="/assets/home/plan.webp" alt="" loading="lazy"></div><div class="phone__body"><div class="phone__screen"><span class="phone__island"></span><img width="660" height="1434" src="/assets/home/plan.webp" alt="A six-week plan: the road from the starting best to the goal, this week's sets, and the race against last week's you" loading="lazy"></div></div></div>
           </div>
 
           <div class="tile tile--third">
@@ -325,6 +329,82 @@
       tilt.style.transform = 'translate(-50%, -50%) rotateY(' + (-18 + x * 10) + 'deg) rotateX(' + (6 - y * 8) + 'deg) rotate(2deg)';
     });
     hero.addEventListener('pointerleave', function () { tilt.style.transform = ''; });
+  })();
+  (function () {
+    // The referee's count: one more each time the bar fills back up.
+    var count = document.getElementById('refCount');
+    var fill = document.querySelector('.ref__fill');
+    if (count && fill) {
+      var n = 0;
+      fill.addEventListener('animationiteration', function () { n = n % 20 + 1; count.textContent = n; });
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('motion');
+
+    // Each part rises into place as it comes into view, a little after the
+    // one before it in the same row.
+    var groups = ['.section__head > *', '.steps > .step', '.facts .fact', '.bento > .tile', '.ladder > .rung',
+      '.ranks__notes > div', '.gallery > figure', '.faq > details', '.closing .wrap > *', '.worlds > *', '.adv-facts > *'];
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        seen.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    groups.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el, i) {
+        el.classList.add('rise');
+        el.style.setProperty('--d', (i % 6) * 70 + 'ms');
+        seen.observe(el);
+      });
+    });
+
+    // The numbers count up to themselves the first time they are seen.
+    var counts = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        counts.unobserve(e.target);
+        var el = e.target, m = el.textContent.match(/^(\d+)(.*)$/);
+        if (!m) return;
+        var to = +m[1], rest = m[2], t0 = performance.now(), ms = 1100;
+        (function step(t) {
+          var k = Math.min(1, (t - t0) / ms), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          el.textContent = v + rest;
+          if (k < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.fact b, .adv-facts b').forEach(function (el) {
+      if (/^\d/.test(el.textContent)) counts.observe(el);
+    });
+
+    // The phones in the tiles and the gallery drift against the scroll.
+    var phones = Array.prototype.slice.call(document.querySelectorAll('.tile .phone, .gallery .phone'));
+    var ticking = false;
+    function drift() {
+      ticking = false;
+      var vh = window.innerHeight;
+      phones.forEach(function (p) {
+        var r = p.getBoundingClientRect();
+        if (r.bottom < -100 || r.top > vh + 100) return;
+        var off = ((r.top + r.height / 2) - vh / 2) / vh;
+        p.style.setProperty('--py', (off * -28).toFixed(1) + 'px');
+      });
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
+    drift();
+
+    // A soft light follows the pointer across the tiles.
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('.tile, .step, .rung').forEach(function (t) {
+        t.addEventListener('pointermove', function (e) {
+          var r = t.getBoundingClientRect();
+          t.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          t.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+    }
   })();
   document.querySelectorAll('[data-badge]').forEach(function (el) {
       el.innerHTML = window.OutrepdCrest.badge(+el.dataset.badge, +el.dataset.size);
