@@ -84,6 +84,50 @@ h3 { font-family: var(--display); font-stretch: 112%; font-weight: 800; text-tra
 .chip .crest svg { width: 44px; height: auto; }
 .chip .dot { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--raised); font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 14px; color: var(--gold); }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* The first screen, as picked (2026-11-09, C): the copy, and beside it the
+   live match on a phone turned towards you with the app floating round it. */
+.hero--stage { padding-block: 110px 72px; }
+.hero--stage::after { content: ""; position: absolute; z-index: -1; right: -6%; top: 10%; width: 60%; height: 85%; background: radial-gradient(closest-side, rgba(232, 132, 107, .17), transparent); filter: blur(14px); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) 540px; align-items: center; gap: 32px; }
+.herostage { position: relative; height: 660px; perspective: 1600px; }
+.herostage__tilt { position: absolute; left: 50%; top: 50%; width: 300px; transform: translate(-50%, -50%) rotateY(-18deg) rotateX(6deg) rotate(2deg); transition: transform .35s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
+.herostage__tilt .phone { filter: drop-shadow(0 40px 70px rgba(0, 0, 0, .55)); }
+.float { position: absolute; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 18px; background: rgba(28, 26, 24, .86); border: 1px solid rgba(245, 239, 228, .14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 20px 50px rgba(0, 0, 0, .45); animation: drift 7s ease-in-out infinite; --r: 0deg; transform: rotate(var(--r)); }
+.float b { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 24px; line-height: 1; }
+.float small { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.3; }
+.float .crest { width: 44px; height: 44px; display: grid; place-items: center; }
+.float .crest svg { width: 44px; height: auto; }
+.float .dot { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--raised); font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 13px; color: var(--gold); }
+.float--rating { left: 4px; top: 62px; --r: -4deg; animation-delay: -1s; }
+.float--plan { right: -6px; top: 150px; --r: 4deg; animation-delay: -3.5s; flex-direction: column; align-items: stretch; gap: 6px; width: 220px; }
+.float--plan b { font-family: var(--body); font-stretch: 100%; font-size: 14px; font-weight: 800; }
+.float__row { display: flex; justify-content: space-between; align-items: baseline; }
+.float__row .ok { color: var(--green); font-size: 13px; font-weight: 700; }
+.float--challenge { left: 28px; bottom: 84px; --r: -3deg; animation-delay: -5s; flex-direction: column; align-items: flex-start; gap: 6px; width: 236px; }
+.float__tag { font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--rival); }
+.float__big { font-size: 30px !important; line-height: .95 !important; text-transform: uppercase; }
+.float__link { margin-top: 4px; background: var(--rival); color: #1A0F0B; font-size: 12px; font-weight: 800; padding: 5px 12px; border-radius: 999px; }
+.float--level { right: 8px; bottom: 120px; --r: 3deg; animation-delay: -2s; }
+@keyframes drift { 0%, 100% { transform: translateY(0) rotate(var(--r)); } 50% { transform: translateY(-10px) rotate(var(--r)); } }
+@media (prefers-reduced-motion: reduce) { .float { animation: none; } .herostage__tilt { transition: none; } }
+@media (max-width: 1080px) { .hero__grid { grid-template-columns: minmax(0, 1fr) 440px; } .herostage__tilt { width: 250px; } .float--challenge { left: 20px; } }
+@media (max-width: 900px) {
+  .hero.hero--stage { padding-block: 96px 40px; }
+  .hero.hero--stage .wrap { margin-top: 0; }
+  .hero__grid { grid-template-columns: 1fr; gap: 8px; }
+  .herostage { height: 560px; margin-inline: -8px; }
+  .herostage__tilt { width: 230px; }
+  .float { padding: 9px 12px; border-radius: 14px; }
+  .float b { font-size: 19px; }
+  .float .crest, .float .dot { width: 34px; height: 34px; }
+  .float .crest svg { width: 34px; }
+  .float--rating { left: 0; top: 40px; }
+  .float--plan { right: 0; top: auto; bottom: 40px; width: 180px; }
+  .float--plan svg { width: 150px; height: auto; }
+  .float--plan b { font-size: 13px; }
+  .float--challenge, .float--level { display: none; }
+}
 @media (max-width: 900px) {
   .hero { display: block; min-height: 0; padding-block: 0 56px; }
   .hero__photo { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 82svh; z-index: -2; }
