@@ -2,9 +2,18 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["U8ZRKKVZB4.com.outrepd.outrepd"],
+        "appIDs": [
+          "U8ZRKKVZB4.com.outrepd.outrepd"
+        ],
         "components": [
-          { "/": "/u/*", "comment": "A lifter's page opens their card in the app." }
+          {
+            "/": "/u/*",
+            "comment": "A lifter's page opens their card in the app."
+          },
+          {
+            "/": "/c/*",
+            "comment": "A challenge by link opens the challenge in the app."
+          }
         ]
       }
     ]

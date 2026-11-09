@@ -3,6 +3,10 @@
     {
       "source": "/u/:username",
       "destination": "/api/u?username=:username"
+    },
+    {
+      "source": "/c/:code([2-9a-hjkmnp-zA-HJKMNP-Z]{6})",
+      "destination": "/c/index.html"
     }
   ],
   "headers": [

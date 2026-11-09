@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>OUTREPD — Can you beat it?</title>
+  <meta name="description" content="A push-up challenge on OUTREPD: race their minute, counted by your phone's camera.">
+  <meta name="theme-color" content="#121110">
+  <meta name="robots" content="noindex, follow">
+
+  <meta property="og:title" content="OUTREPD — Can you beat it?">
+  <meta property="og:description" content="A push-up challenge on OUTREPD: race their minute, counted by your phone's camera.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.outrepd.com/assets/home/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.outrepd.com/assets/home/og.jpg">
+  <!-- On an iPhone with the app, Safari's banner opens this challenge in it. -->
+  <meta name="apple-itunes-app" content="app-id=6817853725" id="itunes-banner">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+  <link rel="stylesheet" href="/home.css?v=6">
+  <link rel="stylesheet" href="/u/card.css?v=5">
+  <link rel="stylesheet" href="/c/challenge.css?v=1">
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/favicon.png" alt="">OUTREPD</a>
+      <nav class="nav__links" aria-label="Sections"><a href="/#how">How it works</a><a href="/#app">The app</a><a href="/#adventure">Adventure</a><a href="/#ranks">Ranks</a><a href="/#faq">FAQ</a></nav>
+      <a class="btn" id="nav-download-btn" href="/#get">Download</a>
+    </div>
+  </header>
+
+  <main class="card-page">
+    <div class="card-page__inner wrap">
+
+      <div class="card-state" id="state-loading">
+        <div class="card-spinner" aria-hidden="true"></div>
+      </div>
+
+      <div class="card-state" id="state-missing" hidden>
+        <p class="card-missing__title">No challenge here</p>
+        <p class="card-missing__body">The link may be wrong, or the challenge may be gone.</p>
+        <a href="#" class="btn" id="missing-download-btn">Download OUTREPD</a>
+      </div>
+
+      <div class="card-state" id="state-card" hidden>
+        <span class="challenge__face" id="challenge-face"></span>
+        <p class="challenge__who" id="challenge-who"></p>
+        <p class="challenge__reps" id="challenge-reps"></p>
+        <p class="challenge__minute">push-ups in 60 seconds</p>
+        <p class="challenge__ask" id="challenge-ask">Can you beat it?</p>
+        <p class="challenge__about">OUTREPD counts your push-ups with your phone's camera. It's free.</p>
+
+        <div class="store-buttons">
+          <a href="#" class="btn card-page__cta" id="card-download-btn">Get the app, then take it</a>
+          <a href="#" class="store-button store-button--other" id="card-other-store"></a>
+          <a href="#" class="challenge__open" id="challenge-open" hidden>Have the app? <u>Open the challenge</u></a>
+        </div>
+        <p class="challenge__meta" id="challenge-meta"></p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/assets/favicon.png" alt="">OUTREPD</a>
+      <nav><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a></nav>
+      <span>&copy; 2026 OUTREPD</span>
+    </div>
+  </footer>
+  <script src="/c/challenge.js?v=1"></script>
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      function solid() { nav.classList.toggle('is-solid', window.scrollY > 24); }
+      window.addEventListener('scroll', solid, { passive: true });
+      solid();
+    })();
+  </script>
+</body>
+</html>
