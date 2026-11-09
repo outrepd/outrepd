@@ -49,7 +49,7 @@
           <p class="display hero__title">Outrep anyone.<span>Live.</span></p>
           <p class="lead">Race real people live, dare friends with a link, and beat last week’s you. Phone on the floor, sixty seconds on the clock, and your camera counts every full rep.</p>
           <div class="stores">
-            <a class="badge" href="https://apps.apple.com/app/id6817853725"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store"></a>
+            <a class="badge" href="https://apps.apple.com/app/id6817853725"><img src="https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store"></a>
             <a class="badge badge--play" href="https://play.google.com/store/apps/details?id=com.outrepd.outrepd"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
           </div>
           <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"/><path d="M8 11v-4a4 4 0 1 1 8 0v4"/></svg>Counted on your phone. No video ever leaves it.</p>
@@ -290,7 +290,7 @@
         <h2 class="display">Your next rival is warming up.</h2>
         <p class="lead">Free on iPhone and Android. Find out where you rank.</p>
         <div class="stores">
-          <a class="badge" href="https://apps.apple.com/app/id6817853725"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store"></a>
+          <a class="badge" href="https://apps.apple.com/app/id6817853725"><img src="https://toolbox.marketingtools.apple.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store"></a>
           <a class="badge badge--play" href="https://play.google.com/store/apps/details?id=com.outrepd.outrepd"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
         </div>
       </div>
@@ -365,18 +365,22 @@
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         counts.unobserve(e.target);
-        var el = e.target, m = el.textContent.match(/^(\d+)(.*)$/);
+        // On timers, not animation frames: a page nobody is looking at (a
+        // search engine's copy, a preview) gets no frames and would keep the
+        // 0. Whatever happens, the real number is there at the end.
+        var el = e.target, final = el.textContent, m = final.match(/^(\d+)( ?s)?$/);
         if (!m) return;
-        var to = +m[1], rest = m[2], t0 = performance.now(), ms = 1100;
-        (function step(t) {
-          var k = Math.min(1, (t - t0) / ms), v = Math.round(to * (1 - Math.pow(1 - k, 3)));
-          el.textContent = v + rest;
-          if (k < 1) requestAnimationFrame(step);
-        })(t0);
+        var to = +m[1], rest = m[2] || '', t0 = Date.now(), ms = 1100;
+        var tick = setInterval(function () {
+          var k = Math.min(1, (Date.now() - t0) / ms);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + rest;
+          if (k >= 1) { clearInterval(tick); el.textContent = final; }
+        }, 30);
+        setTimeout(function () { clearInterval(tick); el.textContent = final; }, ms + 400);
       });
     }, { threshold: 0.6 });
     document.querySelectorAll('.fact b, .adv-facts b').forEach(function (el) {
-      if (/^\d/.test(el.textContent)) counts.observe(el);
+      if (/^\d+( ?s)?$/.test(el.textContent)) counts.observe(el);
     });
 
     // The phones in the tiles and the gallery drift against the scroll.
